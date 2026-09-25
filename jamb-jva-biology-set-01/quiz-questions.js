@@ -1,0 +1,22 @@
+const QUESTIONS = [
+  { q: "Which of the following is a characteristic of an animal cell?", c: ["Presence of chloroplasts", "Cellulose cell wall", "Absence of large vacuoles", "Presence of large vacuoles"], a: 2, source: "JAMB 1978 Q13" },
+  { q: "All living organisms", c: ["photosynthesize", "respire", "move", "feed", "transpire"], a: 1, source: "JAMB 1979 Q1" },
+  { q: "A vacuole is a", c: ["cell with a very empty space", "space in the cytoplasm surrounded by a membrane called the tonoplast", "structure responsible for controlling cell activities", "structure responsible for cellular respiration", "layer surrounding the cell"], a: 1, source: "JAMB 1980 Q24" },
+  { q: "Which cell part is solely responsible for respiration?", c: ["Nucleus", "Nucleolus", "Chloroplast", "Mitochondrion", "Endoplasmic reticulum"], a: 3, source: "JAMB 1980 Q27" },
+  { q: "Which combination is common to both plant and animal cells?", c: ["Cell wall, chloroplasts, mitochondria and lysosomes", "Cell wall, chromosomes, chloroplasts and vacuoles", "Plasma membranes, chromosomes, mitochondria and lysosomes", "Chloroplasts, cellulose, chromosomes and mitochondria"], a: 2, source: "JAMB 1982 Q2" },
+  { q: "Which of the following is NEVER a secondary host of tapeworm?", c: ["Cow", "Fish", "Pig", "Man", "Dog"], a: 3, source: "JAMB 1980 Q5" },
+  { q: "The two human tapeworms can be distinguished by the presence or absence of", c: ["Scolex", "Hooks", "Head", "Sucker", "Proglottis"], a: 1, source: "JAMB 1981 Q23" },
+  { q: "Tapeworm is an endoparasite and can also be described as a parasite because", c: ["it is autotrophic", "it does not feed", "it has no digestive enzymes", "its body absorbs already digested food", "its suckers suck blood from the host"], a: 3, source: "JAMB 1982 Q13" },
+  { q: "Flatworms and roundworms are invertebrates because they", c: ["are small animals", "live inside vertebrates", "are some unicellular", "have no backbones", "are parasitic"], a: 3, source: "JAMB 1982 Q40" },
+  { q: "Which of the following worms is beneficial to man?", c: ["Hookworm", "Tapeworm", "Roundworm", "Earthworm", "Guinea worm"], a: 3, source: "JAMB 1983 Q31" },
+  { q: "An exoskeleton is NOT found in", c: ["Maggot", "Mosquito larva", "Earthworm", "Caterpillar", "Termite"], a: 2, source: "JAMB 1984 Q15" },
+  { q: "The parts of a tapeworm used to fasten it to the host intestine are", c: ["Neck and suckers", "Hooks and suckers", "Rostellum and suckers", "Young proglottids and neck", "Rostellum, hooks and suckers"], a: 4, source: "JAMB 1984 Q33" },
+  { q: "The guard cells of a dicot leaf differ from the other epidermal cells because they", c: ["have no definite shape", "lack nuclei", "are smaller", "contain chloroplasts", "lack a vacuole"], a: 3, source: "JAMB 1983 Q5" },
+  { q: "Herbs differ from shrubs because herbs", c: ["do not produce fruits", "are useful to herbalists", "do not become woody", "are only annuals", "are only perennials"], a: 2, source: "JAMB 1983 Q7" },
+  { q: "Which of the following is NOT a characteristic of monocot plants?", c: ["Occurrence of secondary thickening", "Parallel venation", "Scattered vascular bundles", "Floral parts in threes", "Perianth insignificant"], a: 0, source: "JAMB 1983 Q41" },
+  { q: "The main function of 6 is to", c: ["separate 5 from 7", "produce more of 5 and 7", "produce cork", "translocate water and mineral salt", "conduct carbon dioxide"], a: 1, source: "JAMB 1983 Q3 — diagram referenced in original question" },
+  { q: "The soil swallowed by an earthworm to form a cast is ground up in the", c: ["Clitellum", "Prostomium", "Mouth", "Gizzard"], a: 3, source: "JAMB 1994 Q4" },
+  { q: "Cnidoblast cells in Hydra are used for", c: ["Reproduction", "Offence and defence", "Locomotion and nutrition", "Food collection"], a: 1, source: "JAMB 1997 Q5" },
+  { q: "Annelids differ from nematodes in that annelids are", c: ["bilaterally symmetrical", "triploblastic", "metamerically segmented", "provided with a complete digestive system"], a: 2, source: "JAMB 1997 Q6" },
+  { q: "The hard calcareous shell of a snail is secreted by the", c: ["Whorl", "Ctenidium", "Pneumostome", "Mantle"], a: 3, source: "JAMB 1998 Q4" }
+];

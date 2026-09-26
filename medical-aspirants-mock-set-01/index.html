@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title id="page-title">JVA Mock Quiz</title>
+<style>
+:root{--bg:#1E1B4B;--card:#312E81;--choice:#4338CA;--accent:#22D3EE;--button:#C084FC;--muted:#cbd5e1;--white:#f8fafc;--line:rgba(255,255,255,.1)}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:var(--bg);color:var(--white)}button,input{font:inherit}.wrap{max-width:960px;margin:auto;padding:18px}
+header,.card{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.2)}
+header{padding:16px;display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}.brand{display:flex;gap:12px;align-items:center}.brand-logo{width:58px;height:58px;border-radius:12px;background:#fff}.h1{margin:0;font-size:clamp(19px,3vw,27px)}.meta,.footer{color:var(--muted);font-size:13px;margin-top:6px}.timer-box{padding:8px 12px;border:1px solid rgba(251,191,36,.3);border-radius:12px;text-align:center}.timer-label{display:block;font-size:10px;color:#fde68a}.timer{font-size:20px;font-weight:800;color:#fbbf24}
+.card{padding:20px;margin-top:17px}.eyebrow{color:#67e8f9;font-size:11px;font-weight:800;text-transform:uppercase}.card-title{margin:7px 0}.field-label{display:block;margin:15px 0 6px;font-weight:700;font-size:13px}.text-input{width:100%;padding:12px;border-radius:10px;border:1px solid var(--line);background:rgba(67,56,202,.7);color:#fff}.start-row,.controls,.actions{display:flex;gap:9px;justify-content:space-between;flex-wrap:wrap;margin-top:16px}button{border:0;border-radius:10px;padding:11px 15px;background:var(--button);color:#172033;font-weight:750;cursor:pointer}button.white-button{background:#fff;color:#172033}button.secondary{background:transparent;border:1px solid var(--line);color:#fff}.progress-row{display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}.progress{height:8px;background:rgba(255,255,255,.08);border-radius:20px;margin:9px 0 20px;overflow:hidden}.progress i{display:block;height:100%;background:var(--accent)}.question{font-size:19px;font-weight:700;line-height:1.5;margin-bottom:15px}.choices{display:flex;flex-direction:column;gap:9px}.choice{padding:13px;border-radius:11px;background:var(--choice);cursor:pointer;line-height:1.45}.choice.selected{outline:2px solid var(--accent);background:var(--accent);color:#062b35}.result{padding:16px;background:rgba(0,0,0,.2);border-radius:12px}.review{margin-top:14px}.q-review{padding:13px;border:1px solid var(--line);border-radius:11px;margin:9px 0}.ok{color:#86efac}.bad{color:#fca5a5}.page-actions{text-align:center;margin:18px 0}.page-actions button{margin:4px}.designer{text-align:center;color:var(--muted);font-size:12px}@media(max-width:600px){.wrap{padding:10px}.card{padding:16px}.question{font-size:17px}}
+</style></head>
+<body><div class="wrap">
+<header><div class="brand"><img class="brand-logo" src="logo.svg" alt="JVA"><div><h1 class="h1" id="title"></h1><div class="meta" id="meta"></div><div class="meta">JAMB Vanguard Academy</div></div></div><div class="timer-box"><span class="timer-label">TIME LEFT</span><span class="timer" id="timer">05:00</span></div></header>
+<div class="card" id="intro"><span class="eyebrow">Online assessment</span><h2 class="card-title">Ready to begin?</h2><p class="meta">Enter your details. Your result is recorded through the central SanctumVault results system.</p><label class="field-label">Student name</label><input class="text-input" id="name" placeholder="Enter your full name"><label class="field-label">Institution</label><input class="text-input" id="institution" placeholder="Enter your institution"><div class="start-row"><button class="white-button" id="start">Start Quiz</button></div></div>
+<div class="card" id="quiz" style="display:none"><div class="progress-row"><span>Question <span id="num">1</span> of <span id="total"></span></span><span><span id="pct">0</span>% complete</span></div><div class="progress"><i id="bar"></i></div><div id="area"></div><div class="controls"><div><button class="secondary" id="prev">Previous</button> <button id="next">Next</button></div><button class="secondary" id="submit">Submit Quiz</button></div><p class="footer">You can move between questions and review your answers after submission. The quiz submits automatically when time expires.</p></div>
+<div class="card" id="result" style="display:none"><div class="result"><h2 id="score"></h2><div class="meta" id="summary"></div></div><div class="review" id="review"></div><div class="actions"><button id="retry">Retake Quiz</button><button class="secondary" id="export">Export Results</button></div></div>
+<div class="page-actions"><button class="white-button" id="share">Share Quiz</button><a href="https://wa.me/2348035304561?text=Hello%20JVA%2C%20I%20would%20like%20more%20quiz%20materials." target="_blank" rel="noopener"><button class="white-button">Contact JVA for More Quizzes</button></a><a href="https://wa.me/2349036795652" target="_blank" rel="noopener"><button class="secondary white-button">Contact Developers</button></a></div><div class="designer">Designed by Sanctum</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="quiz-config.js"></script><script src="quiz-questions.js"></script>
+<script>
+const cfg=QUIZ_CONFIG,total=QUESTIONS.length;
+document.getElementById("title").textContent=cfg.title;
+document.getElementById("page-title").textContent=cfg.title;
+document.getElementById("meta").textContent="JVA Mock Quiz • 40 questions • 10 per subject";
+document.getElementById("total").textContent=total;
+const sb=window.supabase.createClient("https://mgmckntsfukikkmwdsee.supabase.co","sb_publishable_msspxVHxSKf9lZ6oXR-nbw_Ds3QLUTM");
+let state={idx:0,answers:Array(total).fill(null),studentName:"",institution:""},seconds=cfg.timeMinutes*60,timer=null,submitted=false,lastReview=[];
+function render(){
+  const q=QUESTIONS[state.idx],area=document.getElementById("area");
+  document.getElementById("num").textContent=state.idx+1;
+  const p=Math.round((state.idx+1)/total*100);
+  document.getElementById("pct").textContent=p;document.getElementById("bar").style.width=p+"%";area.innerHTML="";
+  const qe=document.createElement("div");
+  qe.innerHTML='<div class="meta" style="margin-bottom:8px;font-weight:800;color:#67e8f9;text-transform:uppercase">'+q.subject+'</div><div class="question">'+(state.idx+1)+". "+q.q+"</div>";
+  const cs=document.createElement("div");cs.className="choices";
+  q.c.forEach((x,i)=>{const b=document.createElement("div");b.className="choice"+(state.answers[state.idx]===i?" selected":"");b.textContent=String.fromCharCode(65+i)+". "+x;b.onclick=()=>{state.answers[state.idx]=i;render()};cs.appendChild(b)});
+  qe.appendChild(cs);area.appendChild(qe);
+}
+function finish(){
+ if(submitted)return;submitted=true;clearInterval(timer);
+ let score=0;lastReview=QUESTIONS.map((q,i)=>{let ok=state.answers[i]===q.a;if(ok)score++;return {i,q:q.q,c:q.c,user:state.answers[i],a:q.a,ok,subject:q.subject}});
+ showResult(score);submitResult(score);
+}
+async function submitResult(score){
+ const answers=lastReview.map(x=>({questionNumber:x.i+1,subject:x.subject,question:x.q,selectedAnswer:x.user===null?"No answer":x.c[x.user],correctAnswer:x.c[x.a],result:x.ok?"Correct":"Incorrect"}));
+ const pct=Math.round(score/total*100);
+ const {data,error}=await sb.rpc("submit_quiz_result",{p_quiz_id:cfg.id,p_quiz_name:cfg.title,p_student_name:state.studentName||"Unknown",p_institution:state.institution||"Not provided",p_score:score,p_total_questions:total,p_percentage:pct,p_answers:answers});
+ if(error)console.error(error);else{const row=data&&data[0];if(row&&row.result_token){localStorage.setItem("sv_last_quiz_result_token",row.result_token);window._resultToken=row.result_token}}
+}
+function showResult(score){
+ window._score=score;document.getElementById("quiz").style.display="none";document.getElementById("result").style.display="block";
+ const pct=Math.round(score/total*100);document.getElementById("score").textContent="You scored "+score+" out of "+total;document.getElementById("summary").textContent="Overall percentage: "+pct+"%";
+ const breakdown={};QUESTIONS.forEach((q,i)=>{if(!breakdown[q.subject])breakdown[q.subject]={score:0,total:0};breakdown[q.subject].total++;if(state.answers[i]===q.a)breakdown[q.subject].score++});
+ const list=document.getElementById("review");list.innerHTML="";
+ Object.entries(breakdown).forEach(([subject,v])=>{const d=document.createElement("div");d.className="q-review";d.innerHTML="<strong>"+subject+"</strong><div>"+v.score+" / "+v.total+" ("+Math.round(v.score/v.total*100)+"%)</div>";list.appendChild(d)});
+ const details=document.createElement("div");details.innerHTML='<h3 style="margin-top:20px">Answer Review</h3>';list.appendChild(details);
+ lastReview.forEach(x=>{const d=document.createElement("div");d.className="q-review";d.innerHTML="<strong>"+(x.i+1)+". ["+x.subject+"] "+x.q+"</strong><div class='"+(x.ok?"ok":"bad")+"'>Your answer: "+(x.user===null?"No answer":String.fromCharCode(65+x.user)+". "+x.c[x.user])+"</div><div>Correct: "+String.fromCharCode(65+x.a)+". "+x.c[x.a]+"</div>";list.appendChild(d)})
+}
+function tick(){let m=Math.floor(seconds/60),s=seconds%60;document.getElementById("timer").textContent=String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");if(seconds<=0){finish();return}seconds--}
+document.getElementById("start").onclick=()=>{const n=document.getElementById("name").value.trim();if(!n){alert("Please enter your name to begin.");return}state.studentName=n;state.institution=document.getElementById("institution").value.trim()||"Not provided";document.getElementById("intro").style.display="none";document.getElementById("quiz").style.display="block";render();tick();timer=setInterval(tick,1000)};
+document.getElementById("next").onclick=()=>{if(state.idx<total-1){state.idx++;render()}};
+document.getElementById("prev").onclick=()=>{if(state.idx>0){state.idx--;render()}};
+document.getElementById("submit").onclick=()=>{const u=state.answers.filter(x=>x===null).length;if(u&&!confirm("You have "+u+" unanswered questions. Submit anyway?"))return;finish()};
+document.getElementById("retry").onclick=()=>location.reload();
+document.getElementById("share").onclick=()=>{const shareUrl="https://www.sanctumvault.com.ng/tutor-quiz";navigator.share?navigator.share({title:cfg.title,text:"Try "+cfg.title+" on SanctumVault.",url:shareUrl}):navigator.clipboard.writeText(shareUrl).then(()=>alert("SanctumVault Tutor Quizzes link copied."))};
+document.getElementById("export").onclick=()=>{let out=cfg.title+"\nOverall Score: "+(window._score??"")+" / "+total+"\n\n";const bd={};lastReview.forEach(x=>{if(!bd[x.subject])bd[x.subject]={s:0,t:0};bd[x.subject].t++;if(x.ok)bd[x.subject].s++});Object.entries(bd).forEach(([s,v])=>out+=s+": "+v.s+" / "+v.t+" ("+Math.round(v.s/v.t*100)+"%)\n");out+="\nANSWER REVIEW\n\n";lastReview.forEach(x=>out+=(x.i+1)+". ["+x.subject+"] "+x.q+"\nYour answer: "+(x.user===null?"No answer":x.c[x.user])+"\nCorrect: "+x.c[x.a]+"\n\n");const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([out],{type:"text/plain"}));a.download=cfg.id+"-results.txt";a.click()};
+</script></body></html>

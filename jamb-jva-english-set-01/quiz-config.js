@@ -1,5 +1,6 @@
 const QUIZ_CONFIG = {
   id: "jamb-jva-english-set-01",
+  mode: "tutor-immediate",
   title: "JAMB JVA English — Practice Set 01",
   subject: "English",
   quizNumber: "Practice Set 01",

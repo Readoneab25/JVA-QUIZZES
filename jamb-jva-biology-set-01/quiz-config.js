@@ -1,5 +1,6 @@
 const QUIZ_CONFIG = {
   id: "jamb-jva-biology-set-01",
+  mode: "tutor-immediate",
   title: "JAMB JVA Biology — Practice Set 01",
   subject: "Biology",
   quizNumber: "Practice Set 01",

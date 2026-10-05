@@ -40,13 +40,13 @@ function render(){
 async function finish(){
  if(submitted)return;submitted=true;clearInterval(timer);
  let score=0;lastReview=QUESTIONS.map((q,i)=>{let ok=state.answers[i]===q.a;if(ok)score++;return {i,q:q.q,c:q.c,user:state.answers[i],a:q.a,ok,subject:q.subject}});
- const submission=await submitResult(score);showResult(score,submission?.showScore!==false);
+ const submission=await submitResult(score);showResult(submission?.score ?? score,submission?.showScore===true);
 }
 async function submitResult(score){
  const answers=lastReview.map(x=>({questionNumber:x.i+1,subject:x.subject,question:x.q,selectedIndex:x.user,selectedAnswer:x.user===null?"No answer":x.c[x.user]}));
  const pct=Math.round(score/total*100);
  const {data,error}=await sb.rpc("submit_quiz_result",{p_quiz_id:cfg.id,p_quiz_name:cfg.title,p_student_name:state.studentName||"Unknown",p_institution:state.institution||"Not provided",p_score:score,p_total_questions:total,p_percentage:pct,p_answers:answers});
- if(error){console.error(error);return {showScore:true}}else{const row=data&&data[0];if(row&&row.result_token){localStorage.setItem("sv_last_quiz_result_token",row.result_token);localStorage.setItem("sv_last_quiz_result_quiz",cfg.id);window._resultToken=row.result_token}return {showScore:row?.show_score===true}}
+ if(error){console.error(error);return {showScore:true}}else{const row=data&&data[0];if(row&&row.result_token){localStorage.setItem("sv_last_quiz_result_token",row.result_token);localStorage.setItem("sv_last_quiz_result_quiz",cfg.id);window._resultToken=row.result_token}return {score:row?.score,showScore:row?.show_score===true}}
 }
 function showResult(score,showScore=true){
  window._score=score;document.getElementById("quiz").style.display="none";document.getElementById("result").style.display="block";

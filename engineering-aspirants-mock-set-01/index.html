@@ -58,7 +58,19 @@ function showResult(score){
  lastReview.forEach(x=>{const d=document.createElement("div");d.className="q-review";d.innerHTML="<strong>"+(x.i+1)+". ["+x.subject+"] "+x.q+"</strong><div class='"+(x.ok?"ok":"bad")+"'>Your answer: "+(x.user===null?"No answer":String.fromCharCode(65+x.user)+". "+x.c[x.user])+"</div><div>Correct: "+String.fromCharCode(65+x.a)+". "+x.c[x.a]+"</div>";list.appendChild(d)})
 }
 function tick(){let m=Math.floor(seconds/60),s=seconds%60;document.getElementById("timer").textContent=String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");if(seconds<=0){finish();return}seconds--}
-document.getElementById("start").onclick=()=>{const n=document.getElementById("name").value.trim();if(!n){alert("Please enter your name to begin.");return}state.studentName=n;state.institution=document.getElementById("institution").value.trim()||"Not provided";document.getElementById("intro").style.display="none";document.getElementById("quiz").style.display="block";render();tick();timer=setInterval(tick,1000)};
+async function startTutorQuiz(){
+  if(cfg.mode==="practice"){
+    return true;
+  }
+  const { data: { session } } = await sb.auth.getSession();
+  if(!session?.user){
+    const loginUrl="https://www.sanctumvault.com.ng/login?next="+encodeURIComponent(window.location.href);
+    window.location.assign(loginUrl);
+    return false;
+  }
+  return true;
+}
+document.getElementById("start").onclick=async()=>{if(!(await startTutorQuiz()))return;const n=document.getElementById("name").value.trim();if(!n){alert("Please enter your name to begin.");return}state.studentName=n;state.institution=document.getElementById("institution").value.trim()||"Not provided";document.getElementById("intro").style.display="none";document.getElementById("quiz").style.display="block";render();tick();timer=setInterval(tick,1000)};
 document.getElementById("next").onclick=()=>{if(state.idx<total-1){state.idx++;render()}};
 document.getElementById("prev").onclick=()=>{if(state.idx>0){state.idx--;render()}};
 document.getElementById("submit").onclick=()=>{const u=state.answers.filter(x=>x===null).length;if(u&&!confirm("You have "+u+" unanswered questions. Submit anyway?"))return;finish()};

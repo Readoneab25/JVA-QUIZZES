@@ -37,17 +37,10 @@ function render(){
   q.c.forEach((x,i)=>{const b=document.createElement("div");b.className="choice"+(state.answers[state.idx]===i?" selected":"");b.textContent=String.fromCharCode(65+i)+". "+x;b.onclick=()=>{state.answers[state.idx]=i;render()};cs.appendChild(b)});
   qe.appendChild(cs);area.appendChild(qe);
 }
-function finish(){
- if(submitted)return;submitted=true;clearInterval(timer);
- let score=0;lastReview=QUESTIONS.map((q,i)=>{let ok=state.answers[i]===q.a;if(ok)score++;return {i,q:q.q,c:q.c,user:state.answers[i],a:q.a,ok,subject:q.subject}});
- showResult(score);submitResult(score);
-}
-async function submitResult(score){
- const answers=lastReview.map(x=>({questionNumber:x.i+1,subject:x.subject,question:x.q,selectedAnswer:x.user===null?"No answer":x.c[x.user],correctAnswer:x.c[x.a],result:x.ok?"Correct":"Incorrect"}));
- const pct=Math.round(score/total*100);
- const {data,error}=await sb.rpc("submit_quiz_result",{p_quiz_id:cfg.id,p_quiz_name:cfg.title,p_student_name:state.studentName||"Unknown",p_institution:state.institution||"Not provided",p_score:score,p_total_questions:total,p_percentage:pct,p_answers:answers});
- if(error)console.error(error);else{const row=data&&data[0];if(row&&row.result_token){localStorage.setItem("sv_last_quiz_result_token",row.result_token);window._resultToken=row.result_token}}
-}
+function finish(){if(submitted)return;submitted=true;clearInterval(timer);let score=0;lastReview=QUESTIONS.map((q,i)=>{let ok=state.answers[i]===q.a;if(ok)score++;return {i,q:q.q,c:q.c,user:state.answers[i],a:q.a,ok,subject:q.subject}});if(cfg.mode==="practice"){showResult(score);return}submitResult(score)}
+async function submitResult(score){const answers=lastReview.map(x=>({questionNumber:x.i+1,subject:x.subject,question:x.q,selectedAnswer:x.user===null?"No answer":x.c[x.user],correctAnswer:x.c[x.a],result:x.ok?"Correct":"Incorrect"}));const pct=Math.round(score/total*100);const {data,error}=await sb.rpc("submit_quiz_result",{p_quiz_id:cfg.id,p_quiz_name:cfg.title,p_student_name:state.studentName||"Unknown",p_institution:state.institution||"Not provided",p_score:score,p_total_questions:total,p_percentage:pct,p_answers:answers,p_mode:cfg.mode});if(error){console.error(error);showSubmissionError();return}const row=data&&data[0];if(row&&row.result_token){localStorage.setItem("sv_last_quiz_result_token",row.result_token);window._resultToken=row.result_token}if(cfg.mode==="tutor-review"){showPendingResult()}else{showResult(score)}}
+function showPendingResult(){document.getElementById("quiz").style.display="none";document.getElementById("result").style.display="block";document.getElementById("score").textContent="Submitted — Pending Review";document.getElementById("summary").textContent="Your tutor or an administrator will release your result after review.";document.getElementById("review").innerHTML=""}
+function showSubmissionError(){document.getElementById("quiz").style.display="none";document.getElementById("result").style.display="block";document.getElementById("score").textContent="Submission failed";document.getElementById("summary").textContent="Your result could not be saved. Please try again.";document.getElementById("review").innerHTML=""}
 function showResult(score){
  window._score=score;document.getElementById("quiz").style.display="none";document.getElementById("result").style.display="block";
  const pct=Math.round(score/total*100);document.getElementById("score").textContent="You scored "+score+" out of "+total;document.getElementById("summary").textContent="Overall percentage: "+pct+"%";

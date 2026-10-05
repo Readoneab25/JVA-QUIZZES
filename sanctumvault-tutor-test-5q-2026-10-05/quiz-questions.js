@@ -1,7 +1,7 @@
-const quizQuestions = [
- { question:"Which organ pumps blood around the human body?", options:["Heart","Lung","Kidney","Liver"] },
- { question:"What is the chemical symbol for oxygen?", options:["H","O","C","N"] },
- { question:"Which planet is known as the Red Planet?", options:["Venus","Jupiter","Mars","Mercury"] },
- { question:"What is 12 × 8?", options:["86","94","96","108"] },
- { question:"Which plant part mainly absorbs water and minerals from the soil?", options:["Flower","Leaf","Root","Fruit"] }
+const QUESTIONS = [
+  { q: "Which organ pumps blood around the human body?", c: ["Liver","Heart","Kidney","Lung"], a: 1 },
+  { q: "What is the chemical symbol for oxygen?", c: ["O","Ox","O2","Og"], a: 0 },
+  { q: "Which planet is known as the Red Planet?", c: ["Venus","Mars","Jupiter","Mercury"], a: 1 },
+  { q: "What is 12 × 8?", c: ["86","96","108","112"], a: 1 },
+  { q: "Which part of a plant mainly absorbs water and mineral salts from the soil?", c: ["Flower","Leaf","Root","Fruit"], a: 2 }
 ];

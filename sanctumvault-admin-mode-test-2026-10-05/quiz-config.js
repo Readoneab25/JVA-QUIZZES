@@ -1,1 +1,0 @@
-const QUIZ_CONFIG={id:"sanctumvault-admin-mode-test-2026-10-05",title:"SanctumVault Admin Mode Test",subject:"General",quizNumber:"Admin Mode Test 01",tutorName:"SanctumVault",logo:"../jamb-jva-english-set-01/logo.svg",timeMinutes:5};

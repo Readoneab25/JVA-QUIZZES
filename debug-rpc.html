@@ -1,9 +1,0 @@
-<!doctype html><meta charset="utf-8"><title>RPC Debug</title><pre id="out">Running...</pre><script>
-(async()=>{
-const out=document.getElementById("out");
-try{
-const r=await fetch("https://mgmckntsfukikkmwdsee.supabase.co/rest/v1/rpc/submit_quiz_result",{method:"POST",headers:{"apikey":"sb_publishable_msspxVHxSKf9Zl6oXR-nbw_Ds3QLUTM","Content-Type":"application/json"},body:JSON.stringify({p_quiz_id:"__browser_auth_probe__",p_quiz_name:"probe",p_student_name:"probe",p_institution:"probe",p_score:0,p_total_questions:0,p_percentage:0,p_answers:[]})});
-out.textContent="STATUS "+r.status+"\n"+await r.text();
-}catch(e){out.textContent="FETCH ERROR\n"+e.stack}
-})();
-</script>

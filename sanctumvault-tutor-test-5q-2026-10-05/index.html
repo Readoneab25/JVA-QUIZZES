@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>SanctumVault Tutor Quiz Test</title></head>
+<body>
+<div id="quiz-root"></div>
+<script src="quiz-config.js"></script>
+<script src="quiz-questions.js"></script>
+<script>
+(function(){
+  const root=document.getElementById('quiz-root');
+  root.innerHTML='<h1>'+quizConfig.title+'</h1><p>This is a SanctumVault tutor integration test.</p>';
+  quizQuestions.forEach((q,i)=>{ const d=document.createElement('div'); d.innerHTML='<h3>'+(i+1)+'. '+q.question+'</h3>'+q.options.map((o,j)=>'<label style="display:block"><input type="radio" name="q'+i+'" value="'+j+'"> '+o+'</label>').join(''); root.appendChild(d); });
+  const b=document.createElement('button'); b.textContent='Submit Quiz'; b.onclick=()=>{ const answers=quizQuestions.map((_,i)=>{const x=document.querySelector('input[name="q'+i+'"]:checked'); return x?Number(x.value):null;}); localStorage.setItem('sv_tutor_test_answers',JSON.stringify(answers)); alert('Answers captured. Return to SanctumVault to submit this test through the tutor quiz flow.'); }; root.appendChild(b);
+})();
+</script>
+</body></html>

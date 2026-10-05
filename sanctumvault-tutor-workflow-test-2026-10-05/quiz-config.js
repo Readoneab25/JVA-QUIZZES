@@ -1,5 +1,5 @@
 const QUIZ_CONFIG = {
-  id: "d973a030-213c-48b7-9d8e-0f68d86288fa",
+  id: "sanctumvault-tutor-workflow-test-2026-10-05",
   title: "SanctumVault Tutor Workflow Test",
   subject: "General",
   quizNumber: "Workflow Test 01",

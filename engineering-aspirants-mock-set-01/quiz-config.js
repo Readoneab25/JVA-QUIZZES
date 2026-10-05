@@ -1,5 +1,6 @@
 const QUIZ_CONFIG = {
   id: "jva-engineering-aspirants-mock-set-01",
+  mode: "tutor-immediate",
   title: "Engineering Aspirants Mock Set-01",
   subject: "Engineering Aspirants",
   quizNumber: "Mock Set-01",

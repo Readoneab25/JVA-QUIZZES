@@ -33,28 +33,88 @@ async function startTutorQuiz(){
   if(cfg.mode==="practice"){
     return true;
   }
+
   const { data: { session } } = await sb.auth.getSession();
-  if(!session?.user){
-    const loginUrl="https://www.sanctumvault.com.ng/login?next="+encodeURIComponent(window.location.href);
-    window.location.assign(loginUrl);
-    return false;
-  }
-  return true;
-}
-function tick(){let m=Math.floor(seconds/60),s=seconds%60;document.getElementById("timer").textContent=String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");if(seconds<=0){finish();return}seconds--}
-async function startTutorQuiz(){
-  if(cfg.mode==="practice"){
+  if(session?.user){
     return true;
   }
-  const { data: { session } } = await sb.auth.getSession();
-  if(!session?.user){
+
+  return new Promise(resolve=>{
+    let settled=false;
+    let popup=null;
+    let poll=null;
+    let timeout=null;
+
+    const cleanup=()=>{
+      window.removeEventListener("message",onMessage);
+      if(poll)clearInterval(poll);
+      if(timeout)clearTimeout(timeout);
+    };
+
+    const finishLogin=(ok)=>{
+      if(settled)return;
+      settled=true;
+      cleanup();
+      resolve(ok);
+    };
+
+    const onMessage=async(event)=>{
+      if(event.origin!=="https://www.sanctumvault.com.ng")return;
+      if(!popup || event.source!==popup)return;
+      if(event.data?.type!=="SANCTUMVAULT_AUTH_HANDOFF")return;
+
+      const expectedPath=window.location.pathname+window.location.search+window.location.hash;
+      if(event.data.quizPath!==expectedPath)return;
+
+      const handedSession=event.data.session;
+      if(!handedSession?.access_token || !handedSession?.refresh_token){
+        finishLogin(false);
+        return;
+      }
+
+      const { data, error }=await sb.auth.setSession({
+        access_token:handedSession.access_token,
+        refresh_token:handedSession.refresh_token
+      });
+
+      if(error || !data.session){
+        console.error("Quiz auth handoff failed",error);
+        alert("Login succeeded, but the quiz could not receive your session. Please try again.");
+        finishLogin(false);
+        return;
+      }
+
+      finishLogin(true);
+    };
+
+    window.addEventListener("message",onMessage);
+
     const loginUrl="https://www.sanctumvault.com.ng/login?next="+encodeURIComponent(window.location.href);
-    window.location.assign(loginUrl);
-    return false;
-  }
-  return true;
-}
-document.getElementById("start").onclick=async()=>{if(!(await startTutorQuiz()))return;const n=document.getElementById("name").value.trim();if(!n){alert("Please enter your name to begin.");return}state.studentName=n;state.institution=document.getElementById("institution").value.trim()||"Not provided";document.getElementById("intro").style.display="none";document.getElementById("quiz").style.display="block";render();tick();timer=setInterval(tick,1000)};
+    popup=window.open(
+      loginUrl,
+      "sanctumvaultQuizLogin",
+      "popup=yes,width=480,height=760,resizable=yes,scrollbars=yes"
+    );
+
+    if(!popup){
+      cleanup();
+      alert("Please allow the SanctumVault login popup, then click Start Quiz again.");
+      resolve(false);
+      return;
+    }
+
+    poll=setInterval(()=>{
+      if(popup.closed)finishLogin(false);
+    },500);
+
+    timeout=setTimeout(()=>{
+      if(!settled){
+        try{popup.close()}catch(_){}
+        finishLogin(false);
+      }
+    },5*60*1000);
+  });
+}document.getElementById("start").onclick=async()=>{if(!(await startTutorQuiz()))return;const n=document.getElementById("name").value.trim();if(!n){alert("Please enter your name to begin.");return}state.studentName=n;state.institution=document.getElementById("institution").value.trim()||"Not provided";document.getElementById("intro").style.display="none";document.getElementById("quiz").style.display="block";render();tick();timer=setInterval(tick,1000)};
 document.getElementById("next").onclick=()=>{if(state.idx<total-1){state.idx++;render()}};document.getElementById("prev").onclick=()=>{if(state.idx>0){state.idx--;render()}};document.getElementById("submit").onclick=()=>{const u=state.answers.filter(x=>x===null).length;if(u&&!confirm("You have "+u+" unanswered questions. Submit anyway?"))return;finish()};
 document.getElementById("retry").onclick=()=>location.reload();document.getElementById("share").onclick=()=>{const shareUrl="https://www.sanctumvault.com.ng/tutor-quiz";navigator.share?navigator.share({title:"JVA Quizzes on SanctumVault",text:"Find more JVA quizzes on SanctumVault.",url:shareUrl}):navigator.clipboard.writeText(shareUrl).then(()=>alert("SanctumVault Tutor Quizzes link copied."))};
 document.getElementById("export").onclick=()=>{let out=cfg.title+"\nScore: "+(window._score??"")+" / "+total+"\n\n";lastReview.forEach(x=>out+=(x.i+1)+". "+x.q+"\nYour answer: "+(x.user===null?"No answer":x.c[x.user])+"\nCorrect: "+x.c[x.a]+"\n\n");const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([out],{type:"text/plain"}));a.download="jamb-jva-biology-set-01-results.txt";a.click()};

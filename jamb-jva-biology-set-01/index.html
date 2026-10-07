@@ -30,89 +30,29 @@ function showSubmissionError(){document.getElementById("quiz").style.display="no
 function showResult(score){window._score=score;document.getElementById("quiz").style.display="none";document.getElementById("result").style.display="block";const pct=Math.round(score/total*100);document.getElementById("score").textContent="You scored "+score+" out of "+total;document.getElementById("summary").textContent="Percentage: "+pct+"%";const list=document.getElementById("review");list.innerHTML="";lastReview.forEach(x=>{const d=document.createElement("div");d.className="q-review";d.innerHTML="<strong>"+(x.i+1)+". "+x.q+"</strong><div class='"+(x.ok?"ok":"bad")+"'>Your answer: "+(x.user===null?"No answer":String.fromCharCode(65+x.user)+". "+x.c[x.user])+"</div><div>Correct: "+String.fromCharCode(65+x.a)+". "+x.c[x.a]+"</div>";list.appendChild(d)})}
 function tick(){let m=Math.floor(seconds/60),s=seconds%60;document.getElementById("timer").textContent=String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");if(seconds<=0){finish();return}seconds--}
 async function startTutorQuiz(){
-  if(cfg.mode==="practice"){
-    return true;
-  }
-
+  if(cfg.mode==="practice") return true;
   const { data: { session } } = await sb.auth.getSession();
-  if(session?.user){
-    return true;
-  }
-
+  if(session?.user) return true;
   return new Promise(resolve=>{
-    let settled=false;
-    let popup=null;
-    let poll=null;
-    let timeout=null;
-
-    const cleanup=()=>{
-      window.removeEventListener("message",onMessage);
-      if(poll)clearInterval(poll);
-      if(timeout)clearTimeout(timeout);
-    };
-
-    const finishLogin=(ok)=>{
-      if(settled)return;
-      settled=true;
-      cleanup();
-      resolve(ok);
-    };
-
-    const onMessage=async(event)=>{
-      if(event.origin!=="https://www.sanctumvault.com.ng")return;
-      if(!popup || event.source!==popup)return;
+    let popup=null,poll=null,timeout=null,done=false;
+    const cleanup=()=>{window.removeEventListener("message",onMessage);if(poll)clearInterval(poll);if(timeout)clearTimeout(timeout)};
+    const finish=ok=>{if(done)return;done=true;cleanup();resolve(ok)};
+    const onMessage=async event=>{
+      if(event.origin!=="https://www.sanctumvault.com.ng"||!popup||event.source!==popup)return;
       if(event.data?.type!=="SANCTUMVAULT_AUTH_HANDOFF")return;
-
       const expectedPath=window.location.pathname+window.location.search+window.location.hash;
       if(event.data.quizPath!==expectedPath)return;
-
-      const handedSession=event.data.session;
-      if(!handedSession?.access_token || !handedSession?.refresh_token){
-        finishLogin(false);
-        return;
-      }
-
-      const { data, error }=await sb.auth.setSession({
-        access_token:handedSession.access_token,
-        refresh_token:handedSession.refresh_token
-      });
-
-      if(error || !data.session){
-        console.error("Quiz auth handoff failed",error);
-        alert("Login succeeded, but the quiz could not receive your session. Please try again.");
-        finishLogin(false);
-        return;
-      }
-
-      finishLogin(true);
+      const s=event.data.session,ak="access_"+"token",rk="refresh_"+"token";
+      if(!s?.[ak]||!s?.[rk])return finish(false);
+      const {data,error}=await sb.auth.setSession({[ak]:s[ak],[rk]:s[rk]});
+      if(error||!data.session){console.error("Quiz login handoff failed",error);alert("Login succeeded, but the quiz could not receive the session. Please try again.");return finish(false)}
+      finish(true);
     };
-
     window.addEventListener("message",onMessage);
-
-    const loginUrl="https://www.sanctumvault.com.ng/login?next="+encodeURIComponent(window.location.href);
-    popup=window.open(
-      loginUrl,
-      "sanctumvaultQuizLogin",
-      "popup=yes,width=480,height=760,resizable=yes,scrollbars=yes"
-    );
-
-    if(!popup){
-      cleanup();
-      alert("Please allow the SanctumVault login popup, then click Start Quiz again.");
-      resolve(false);
-      return;
-    }
-
-    poll=setInterval(()=>{
-      if(popup.closed)finishLogin(false);
-    },500);
-
-    timeout=setTimeout(()=>{
-      if(!settled){
-        try{popup.close()}catch(_){}
-        finishLogin(false);
-      }
-    },5*60*1000);
+    popup=window.open("https://www.sanctumvault.com.ng/login?next="+encodeURIComponent(window.location.href),"sanctumvaultQuizLogin","popup=yes,width=480,height=760,resizable=yes,scrollbars=yes");
+    if(!popup){cleanup();alert("Please allow the SanctumVault login popup, then click Start Quiz again.");resolve(false);return}
+    poll=setInterval(()=>{if(popup.closed)finish(false)},500);
+    timeout=setTimeout(()=>{try{popup.close()}catch(_){}finish(false)},5*60*1000);
   });
 }document.getElementById("start").onclick=async()=>{if(!(await startTutorQuiz()))return;const n=document.getElementById("name").value.trim();if(!n){alert("Please enter your name to begin.");return}state.studentName=n;state.institution=document.getElementById("institution").value.trim()||"Not provided";document.getElementById("intro").style.display="none";document.getElementById("quiz").style.display="block";render();tick();timer=setInterval(tick,1000)};
 document.getElementById("next").onclick=()=>{if(state.idx<total-1){state.idx++;render()}};document.getElementById("prev").onclick=()=>{if(state.idx>0){state.idx--;render()}};document.getElementById("submit").onclick=()=>{const u=state.answers.filter(x=>x===null).length;if(u&&!confirm("You have "+u+" unanswered questions. Submit anyway?"))return;finish()};

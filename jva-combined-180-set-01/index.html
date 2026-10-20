@@ -9,11 +9,19 @@
 header,.card{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.2)}
 header{padding:16px;display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}.brand{display:flex;gap:12px;align-items:center}.brand-logo{width:58px;height:58px;border-radius:12px;background:#fff}.h1{margin:0;font-size:clamp(19px,3vw,27px)}.meta,.footer{color:var(--muted);font-size:13px;margin-top:6px}.timer-box{padding:8px 12px;border:1px solid rgba(251,191,36,.3);border-radius:12px;text-align:center}.timer-label{display:block;font-size:10px;color:#fde68a}.timer{font-size:20px;font-weight:800;color:#fbbf24}
 .card{padding:20px;margin-top:17px}.eyebrow{color:#67e8f9;font-size:11px;font-weight:800;text-transform:uppercase}.card-title{margin:7px 0}.field-label{display:block;margin:15px 0 6px;font-weight:700;font-size:13px}.text-input{width:100%;padding:12px;border-radius:10px;border:1px solid var(--line);background:rgba(67,56,202,.7);color:#fff}.start-row,.controls,.actions{display:flex;gap:9px;justify-content:space-between;flex-wrap:wrap;margin-top:16px}button{border:0;border-radius:10px;padding:11px 15px;background:var(--button);color:#172033;font-weight:750;cursor:pointer}button.white-button{background:#fff;color:#172033}button.secondary{background:transparent;border:1px solid var(--line);color:#fff}.progress-row{display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}.progress{height:8px;background:rgba(255,255,255,.08);border-radius:20px;margin:9px 0 20px;overflow:hidden}.progress i{display:block;height:100%;background:var(--accent)}.question{font-size:19px;font-weight:700;line-height:1.5;margin-bottom:15px}.choices{display:flex;flex-direction:column;gap:9px}.choice{padding:13px;border-radius:11px;background:var(--choice);cursor:pointer;line-height:1.45}.choice.selected{outline:2px solid var(--accent);background:var(--accent);color:#062b35}.result{padding:16px;background:rgba(0,0,0,.2);border-radius:12px}.review{margin-top:14px}.q-review{padding:13px;border:1px solid var(--line);border-radius:11px;margin:9px 0}.ok{color:#86efac}.bad{color:#fca5a5}.page-actions{text-align:center;margin:18px 0}.page-actions button{margin:4px}.designer{text-align:center;color:var(--muted);font-size:12px}@media(max-width:600px){.wrap{padding:10px}.card{padding:16px}.question{font-size:17px}}
+
+/* JAMB-style question navigator */
+.navigator{margin-top:22px;padding:16px;border:1px solid var(--line);border-radius:14px;background:rgba(0,0,0,.13)}
+.navigator-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:12px}.navigator-title{margin:0;font-size:16px}.navigator-stats{font-size:12px;color:var(--muted)}
+.subject-tabs{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:12px}.subject-tab{padding:8px 11px;background:transparent;color:var(--white);border:1px solid var(--line);font-size:12px}.subject-tab.active{background:var(--accent);color:#062b35}
+.question-grid{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:7px;max-height:245px;overflow-y:auto;padding:3px}.nav-number{padding:0;min-width:0;height:36px;border:2px solid transparent;border-radius:7px;background:#64748b;color:white;font-size:12px}.nav-number.answered{background:#15803d;color:white}.nav-number.skipped{background:#b91c1c;color:white}.nav-number.current{border-color:#fbbf24;outline:2px solid #fbbf24;outline-offset:1px}.nav-number:focus-visible,.subject-tab:focus-visible{outline:3px solid #fbbf24;outline-offset:2px}
+.navigator-legend{display:flex;flex-wrap:wrap;gap:10px 15px;margin-top:13px;font-size:12px;color:var(--muted)}.legend-dot{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:5px;vertical-align:middle}.legend-dot.answered{background:#15803d}.legend-dot.skipped{background:#b91c1c}.legend-dot.unvisited{background:#64748b}.legend-dot.current{border:2px solid #fbbf24}
+@media(max-width:600px){.question-grid{grid-template-columns:repeat(6,minmax(0,1fr))}.navigator{padding:12px}.nav-number{height:40px}}
 </style></head>
 <body><div class="wrap">
 <header><div class="brand"><img class="brand-logo" src="logo.svg" alt="JVA"><div><h1 class="h1" id="title"></h1><div class="meta" id="meta"></div><div class="meta">JAMB Vanguard Academy</div></div></div><div class="timer-box"><span class="timer-label">TIME LEFT</span><span class="timer" id="timer">30:00</span></div></header>
 <div class="card" id="intro"><span class="eyebrow">Online assessment</span><h2 class="card-title">Ready to begin?</h2><p class="meta">Enter your details. Your result is recorded through the central SanctumVault results system.</p><label class="field-label">Student name</label><input class="text-input" id="name" placeholder="Enter your full name"><label class="field-label">Institution</label><input class="text-input" id="institution" placeholder="Enter your institution"><div class="start-row"><button class="white-button" id="start">Start Quiz</button></div></div>
-<div class="card" id="quiz" style="display:none"><div class="progress-row"><span>Question <span id="num">1</span> of <span id="total"></span></span><span><span id="pct">0</span>% complete</span></div><div class="progress"><i id="bar"></i></div><div id="area"></div><div class="controls"><div><button class="secondary" id="prev">Previous</button> <button id="next">Next</button></div><button class="secondary" id="submit">Submit Quiz</button></div><p class="footer">You can move between questions. Results and correct answers remain hidden until the tutor releases them. The quiz submits automatically when time expires.</p></div>
+<div class="card" id="quiz" style="display:none"><div class="progress-row"><span>Question <span id="num">1</span> of <span id="total"></span></span><span><span id="pct">0</span>% complete</span></div><div class="progress"><i id="bar"></i></div><div id="area"></div><section class="navigator" aria-label="Question navigator"><div class="navigator-head"><h3 class="navigator-title">Question Navigator</h3><span class="navigator-stats" id="nav-stats" aria-live="polite"></span></div><div class="subject-tabs" id="subject-tabs" role="group" aria-label="Filter by subject"></div><div class="question-grid" id="question-grid" role="group" aria-label="Jump to question"></div><div class="navigator-legend"><span><i class="legend-dot answered"></i>Answered</span><span><i class="legend-dot skipped"></i>Skipped</span><span><i class="legend-dot unvisited"></i>Not visited</span><span><i class="legend-dot current"></i>Current question (yellow outline)</span></div></section><div class="controls"><div><button class="secondary" id="prev">Previous</button> <button id="next">Next</button></div><button class="secondary" id="submit">Submit Quiz</button></div><p class="footer">You can move between questions. Results and correct answers remain hidden until the tutor releases them. The quiz submits automatically when time expires.</p></div>
 <div class="card" id="result" style="display:none"><div class="result"><h2 id="score"></h2><div class="meta" id="summary"></div></div><div class="review" id="review"></div><div class="actions"><button id="retry">Retake Quiz</button><button class="secondary" id="export" style="display:none">Export Results</button></div></div>
 <div class="page-actions"><button class="white-button" id="share">Share Quiz</button><a href="https://wa.me/2348035304561?text=Hello%20JVA%2C%20I%20would%20like%20more%20quiz%20materials." target="_blank" rel="noopener"><button class="white-button">Contact JVA for More Quizzes</button></a><a href="https://wa.me/2349036795652" target="_blank" rel="noopener"><button class="secondary white-button">Contact Developers</button></a></div><div class="designer">Designed by Sanctum</div>
 </div>
@@ -40,15 +48,32 @@ document.getElementById("total").textContent=total;
 if(examError){const btn=document.getElementById("start");btn.disabled=true;btn.textContent="Exam not yet available";document.querySelector("#intro .meta").textContent=examError;}
 const sb=window.supabase.createClient("https://mgmckntsfukikkmwdsee.supabase.co","sb_publishable_msspxVHxSKf9lZ6oXR-nbw_Ds3QLUTM");
 let state={idx:0,answers:Array(total).fill(null),studentName:"",institution:""},seconds=cfg.timeMinutes*60,timer=null,submitted=false,lastReview=[];
+
+const visitedQuestions=new Set(),skippedQuestions=new Set();
+let activeSubject="All";
+const subjectRanges=["All","English","Physics","Chemistry","Biology"];
+function goToQuestion(index){
+  if(index<0||index>=total||submitted)return;
+  if(state.answers[state.idx]===null&&visitedQuestions.has(state.idx))skippedQuestions.add(state.idx);
+  state.idx=index;visitedQuestions.add(index);skippedQuestions.delete(index);render();
+}
+function renderNavigator(){
+  const answered=state.answers.filter(x=>x!==null).length;
+  document.getElementById("nav-stats").textContent=answered+" answered · "+skippedQuestions.size+" skipped · "+(total-answered-skippedQuestions.size)+" remaining";
+  const tabs=document.getElementById("subject-tabs");tabs.replaceChildren();
+  subjectRanges.forEach(subject=>{const b=document.createElement("button");b.type="button";b.className="subject-tab"+(activeSubject===subject?" active":"");b.textContent=subject;b.setAttribute("aria-pressed",String(activeSubject===subject));b.onclick=()=>{activeSubject=subject;renderNavigator()};tabs.appendChild(b)});
+  const grid=document.getElementById("question-grid");grid.replaceChildren();
+  QUESTIONS.forEach((q,i)=>{if(activeSubject!=="All"&&q.subject!==activeSubject)return;const b=document.createElement("button");b.type="button";b.className="nav-number"+(state.answers[i]!==null?" answered":skippedQuestions.has(i)?" skipped":"")+(state.idx===i?" current":"");b.textContent=i+1;b.setAttribute("aria-label","Question "+(i+1)+", "+q.subject+", "+(state.answers[i]!==null?"answered":skippedQuestions.has(i)?"skipped":"not visited")+(state.idx===i?", current":""));if(state.idx===i)b.setAttribute("aria-current","step");b.onclick=()=>goToQuestion(i);grid.appendChild(b)});
+}
 function render(){
   const q=QUESTIONS[state.idx],area=document.getElementById("area");
   document.getElementById("num").textContent=state.idx+1;
   const p=Math.round((state.idx+1)/total*100);
-  document.getElementById("pct").textContent=p;document.getElementById("bar").style.width=p+"%";area.innerHTML="";
+  document.getElementById("pct").textContent=p;document.getElementById("bar").style.width=p+"%";area.innerHTML="";renderNavigator();
   const qe=document.createElement("div");
   qe.innerHTML='<div class="meta" style="margin-bottom:8px;font-weight:800;color:#67e8f9;text-transform:uppercase">'+q.subject+'</div><div class="question">'+(state.idx+1)+". "+q.q+"</div>";
   const cs=document.createElement("div");cs.className="choices";
-  q.c.forEach((x,i)=>{const b=document.createElement("div");b.className="choice"+(state.answers[state.idx]===i?" selected":"");b.textContent=String.fromCharCode(65+i)+". "+x;b.onclick=()=>{state.answers[state.idx]=i;render()};cs.appendChild(b)});
+  q.c.forEach((x,i)=>{const b=document.createElement("div");b.className="choice"+(state.answers[state.idx]===i?" selected":"");b.textContent=String.fromCharCode(65+i)+". "+x;b.onclick=()=>{state.answers[state.idx]=i;skippedQuestions.delete(state.idx);render()};cs.appendChild(b)});
   qe.appendChild(cs);area.appendChild(qe);
 }
 function finish(){if(submitted)return;submitted=true;clearInterval(timer);document.getElementById("submit").disabled=true;let score=0;lastReview=QUESTIONS.map((q,i)=>{let ok=state.answers[i]===q.a;if(ok)score++;return {i,q:q.q,c:q.c,user:state.answers[i],a:q.a,ok,subject:q.subject}});if(cfg.mode==="practice"){showResult(score);return}submitResult(score)}
@@ -90,9 +115,9 @@ async function startTutorQuiz(){
     poll=setInterval(()=>{if(popup.closed)finish(false)},500);
     timeout=setTimeout(()=>{try{popup.close()}catch(_){}finish(false)},5*60*1000);
   });
-}document.getElementById("start").onclick=async()=>{if(examError){alert(examError);return;}if(!(await startTutorQuiz()))return;const n=document.getElementById("name").value.trim();if(!n){alert("Please enter your name to begin.");return}state.studentName=n;state.institution=document.getElementById("institution").value.trim()||"Not provided";document.getElementById("intro").style.display="none";document.getElementById("quiz").style.display="block";render();tick();timer=setInterval(tick,1000)};
-document.getElementById("next").onclick=()=>{if(state.idx<total-1){state.idx++;render()}};
-document.getElementById("prev").onclick=()=>{if(state.idx>0){state.idx--;render()}};
+}document.getElementById("start").onclick=async()=>{if(examError){alert(examError);return;}if(!(await startTutorQuiz()))return;const n=document.getElementById("name").value.trim();if(!n){alert("Please enter your name to begin.");return}state.studentName=n;state.institution=document.getElementById("institution").value.trim()||"Not provided";document.getElementById("intro").style.display="none";document.getElementById("quiz").style.display="block";visitedQuestions.add(0);render();tick();timer=setInterval(tick,1000)};
+document.getElementById("next").onclick=()=>{if(state.idx<total-1)goToQuestion(state.idx+1)};
+document.getElementById("prev").onclick=()=>{if(state.idx>0)goToQuestion(state.idx-1)};
 document.getElementById("submit").onclick=()=>{const u=state.answers.filter(x=>x===null).length;if(u&&!confirm("You have "+u+" unanswered questions. Submit anyway?"))return;finish()};
 document.getElementById("retry").onclick=()=>location.reload();
 if(cfg.mode==="tutor-review"){document.getElementById("retry").style.display="none";document.getElementById("export").style.display="none";}

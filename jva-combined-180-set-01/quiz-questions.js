@@ -658,5 +658,445 @@ const QUESTIONS = [
       "advises"
     ],
     "a": 0
+  },
+  {
+    "subject": "Physics",
+    "q": "A particle moves in a circle of radius 0.02 m at 0.88 m/s. Find frequency (π=22/7).",
+    "c": [
+      "2 Hz",
+      "7 Hz",
+      "8.8 Hz",
+      "14 Hz"
+    ],
+    "a": 1
+  },
+  {
+    "subject": "Physics",
+    "q": "A pendulum has period 2.0 s. What is its period if its length is doubled?",
+    "c": [
+      "1.00 s",
+      "1.41 s",
+      "0.35 s",
+      "2.83 s"
+    ],
+    "a": 3
+  },
+  {
+    "subject": "Physics",
+    "q": "Which assumption is made for a simple pendulum?",
+    "c": [
+      "The string is inextensible",
+      "The bob has large size",
+      "The bob has no mass",
+      "The angle is large"
+    ],
+    "a": 0
+  },
+  {
+    "subject": "Physics",
+    "q": "A ball moves anticlockwise in a circle. When its string breaks, it moves...",
+    "c": [
+      "toward the centre",
+      "radially outward",
+      "along the tangent in its direction of motion",
+      "in a smaller circle"
+    ],
+    "a": 2
+  },
+  {
+    "subject": "Physics",
+    "q": "An object moves at uniform speed in a circle. Its acceleration has...",
+    "c": [
+      "constant magnitude and direction",
+      "constant magnitude and changing direction",
+      "changing magnitude and constant direction",
+      "changing magnitude and direction"
+    ],
+    "a": 1
+  },
+  {
+    "subject": "Physics",
+    "q": "Times for 30 pendulum oscillations are 70, 72 and 67 s. Mean period?",
+    "c": [
+      "0.14 s",
+      "0.43 s",
+      "2.32 s",
+      "6.97 s"
+    ],
+    "a": 2
+  },
+  {
+    "subject": "Physics",
+    "q": "Which affect a simple pendulum's period? I mass II length III gravitational acceleration",
+    "c": [
+      "I II III",
+      "II and III",
+      "I and III",
+      "I and II"
+    ],
+    "a": 1
+  },
+  {
+    "subject": "Physics",
+    "q": "For a particle in uniform circular motion...",
+    "c": [
+      "kinetic energy is constant but linear momentum changes",
+      "momentum constant but energy changes",
+      "both are constant",
+      "linear velocity constant"
+    ],
+    "a": 0
+  },
+  {
+    "subject": "Physics",
+    "q": "A pendulum bob crosses its lowest point twice per second. Find length if g=10 m/s².",
+    "c": [
+      "0.25 m",
+      "0.45 m",
+      "0.58 m",
+      "1.00 m"
+    ],
+    "a": 0
+  },
+  {
+    "subject": "Physics",
+    "q": "Which are in phase in simple harmonic motion?",
+    "c": [
+      "displacement and velocity",
+      "displacement and restoring force",
+      "velocity and acceleration",
+      "restoring force and acceleration"
+    ],
+    "a": 3
+  },
+  {
+    "subject": "Physics",
+    "q": "For an ideal inclined plane, mechanical advantage depends on...",
+    "c": [
+      "length alone",
+      "height alone",
+      "product of length and height",
+      "ratio of length to height"
+    ],
+    "a": 3
+  },
+  {
+    "subject": "Physics",
+    "q": "A 20-toothed gear drives a 60-toothed gear at 120 revolutions/s. Speed of driven gear?",
+    "c": [
+      "3 rev/s",
+      "40 rev/s",
+      "360 rev/s",
+      "2400 rev/s"
+    ],
+    "a": 1
+  },
+  {
+    "subject": "Physics",
+    "q": "A block and tackle lifts 20 N by 10 cm at 40% efficiency. Work against friction?",
+    "c": [
+      "0.8 J",
+      "1.2 J",
+      "3 J",
+      "5 J"
+    ],
+    "a": 2
+  },
+  {
+    "subject": "Physics",
+    "q": "An inclined plane at 30° has velocity ratio...",
+    "c": [
+      "2",
+      "1",
+      "0.866",
+      "0.5"
+    ],
+    "a": 0
+  },
+  {
+    "subject": "Physics",
+    "q": "Wheel and axle radii are 80 cm and 10 cm; efficiency 85%; effort 1200 N. Load?",
+    "c": [
+      "8 N",
+      "6.8 N",
+      "8160 N",
+      "9600 N"
+    ],
+    "a": 2
+  },
+  {
+    "subject": "Physics",
+    "q": "Pull 20 kg up a 30° plane of 75% efficiency. Effort? g=10 m/s²",
+    "c": [
+      "13.3 N",
+      "73.5 N",
+      "133.3 N",
+      "533.2 N"
+    ],
+    "a": 2
+  },
+  {
+    "subject": "Physics",
+    "q": "A machine receives 1000 J and raises 500 N by 1.5 m. Efficiency?",
+    "c": [
+      "80%",
+      "75%",
+      "50%",
+      "33%"
+    ],
+    "a": 1
+  },
+  {
+    "subject": "Physics",
+    "q": "Screw jack pitch 0.3 cm and tommy-bar radius 21 cm. Velocity ratio?",
+    "c": [
+      "1/(140π)",
+      "14π",
+      "70π",
+      "140π"
+    ],
+    "a": 3
+  },
+  {
+    "subject": "Physics",
+    "q": "A 1.5 kW pump raises 200 kg of water by 6 m in 10 s. Efficiency? g=10",
+    "c": [
+      "90%",
+      "85%",
+      "80%",
+      "65%"
+    ],
+    "a": 2
+  },
+  {
+    "subject": "Physics",
+    "q": "Wheel and axle diameters 40 cm and 8 cm, efficiency 80%. Effort for 100 N load?",
+    "c": [
+      "20 N",
+      "25 N",
+      "50 N",
+      "80 N"
+    ],
+    "a": 1
+  },
+  {
+    "subject": "Physics",
+    "q": "A spring is 25 cm under 5 N and 30 cm under 10 N. Length under 3 N?",
+    "c": [
+      "15 cm",
+      "17 cm",
+      "20 cm",
+      "23 cm"
+    ],
+    "a": 3
+  },
+  {
+    "subject": "Physics",
+    "q": "Tensile stress in a wire depends on...",
+    "c": [
+      "load and extension",
+      "load and radius",
+      "radius and extension",
+      "extension and original length"
+    ],
+    "a": 1
+  },
+  {
+    "subject": "Physics",
+    "q": "A spring extends 5 cm under 150 N. Energy stored?",
+    "c": [
+      "3750 J",
+      "2500 J",
+      "3.75 J",
+      "2.50 J"
+    ],
+    "a": 2
+  },
+  {
+    "subject": "Physics",
+    "q": "A 15 N force makes a spring 30 cm; an extra 10 N adds 5 cm. Natural length?",
+    "c": [
+      "25 cm",
+      "22.5 cm",
+      "20 cm",
+      "15 cm"
+    ],
+    "a": 1
+  },
+  {
+    "subject": "Physics",
+    "q": "Energy stored in a wire stretched 0.02 m by 500 N?",
+    "c": [
+      "5 J",
+      "10 J",
+      "100 J",
+      "10000 J"
+    ],
+    "a": 0
+  },
+  {
+    "subject": "Physics",
+    "q": "A 20 N load extends a 3 m wire by 10⁻⁴ m; area 8×10⁻⁷ m². Young's modulus?",
+    "c": [
+      "7.0×10¹⁰ Pa",
+      "7.5×10¹¹ Pa",
+      "8.5×10¹⁰ Pa",
+      "9.0×10¹¹ Pa"
+    ],
+    "a": 1
+  },
+  {
+    "subject": "Physics",
+    "q": "A 0.01 m tendon extends by 2×10⁻⁵ m. Strain?",
+    "c": [
+      "5×10⁶",
+      "5×10²",
+      "2×10⁻³",
+      "2×10⁻⁷"
+    ],
+    "a": 2
+  },
+  {
+    "subject": "Physics",
+    "q": "Stress 10⁷ Pa extends wire from 10.00 cm to 10.05 cm. Young's modulus?",
+    "c": [
+      "5×10⁴ Pa",
+      "5×10⁵ Pa",
+      "2×10⁸ Pa",
+      "2×10⁹ Pa"
+    ],
+    "a": 3
+  },
+  {
+    "subject": "Physics",
+    "q": "A 0.5 kg stone is projected at 40 m/s by a catapult extended 0.2 m. Force at maximum extension?",
+    "c": [
+      "4×10⁴ N",
+      "4×10³ N",
+      "2×10³ N",
+      "4×10² N"
+    ],
+    "a": 1
+  },
+  {
+    "subject": "Physics",
+    "q": "A 500 N/m spring compressed 0.02 m projects a 0.005 kg mass. Maximum height? g=10",
+    "c": [
+      "8 m",
+      "4 m",
+      "2 m",
+      "1 m"
+    ],
+    "a": 2
+  },
+  {
+    "subject": "Physics",
+    "q": "Density of a solid is...",
+    "c": [
+      "mass relative to equal water volume",
+      "water displaced per unit mass",
+      "weight per unit volume",
+      "mass per unit volume"
+    ],
+    "a": 3
+  },
+  {
+    "subject": "Physics",
+    "q": "A submerged solid is lifted and its supporting string breaks as it emerges because...",
+    "c": [
+      "tension decreases",
+      "mass increases",
+      "upthrust decreases and apparent weight increases",
+      "gravity increases"
+    ],
+    "a": 2
+  },
+  {
+    "subject": "Physics",
+    "q": "400 cm³ oil of density 0.9 g/cm³ changes to density 0.6 g/cm³ with unchanged mass. Volume?",
+    "c": [
+      "360 cm³",
+      "600 cm³",
+      "240 cm³",
+      "800 cm³"
+    ],
+    "a": 1
+  },
+  {
+    "subject": "Physics",
+    "q": "An object of mass m and volume V is immersed in liquid of density ρ and suspended from above. Tension?",
+    "c": [
+      "mg",
+      "(m+ρV)g",
+      "(m−ρV)g",
+      "ρVg"
+    ],
+    "a": 2
+  },
+  {
+    "subject": "Physics",
+    "q": "A solid weighs 4.8 units in air, 2.8 in water and 3.2 in kerosene. Density of solid divided by kerosene density?",
+    "c": [
+      "12",
+      "3",
+      "2",
+      "1.5"
+    ],
+    "a": 1
+  },
+  {
+    "subject": "Physics",
+    "q": "Relative density of a granular solid is measured accurately using a balance and...",
+    "c": [
+      "pipette",
+      "burette",
+      "measuring cylinder",
+      "density bottle"
+    ],
+    "a": 3
+  },
+  {
+    "subject": "Physics",
+    "q": "Why does cork float in water?",
+    "c": [
+      "no upthrust acts",
+      "fully submerged upthrust exceeds its weight",
+      "fully submerged upthrust is less than weight",
+      "its density exceeds water"
+    ],
+    "a": 1
+  },
+  {
+    "subject": "Physics",
+    "q": "A hydrometer measures...",
+    "c": [
+      "water depth",
+      "relative density of liquid by flotation",
+      "relative density by apparent weight",
+      "relative humidity"
+    ],
+    "a": 1
+  },
+  {
+    "subject": "Physics",
+    "q": "A metal has relative density 19 and volume 20 cm³. What is its actual mass when immersed in water?",
+    "c": [
+      "380 g",
+      "400 g",
+      "360 g",
+      "39 g"
+    ],
+    "a": 0
+  },
+  {
+    "subject": "Physics",
+    "q": "A 2 kg body moves at 6 m/s in a circle of radius 4 m. Centripetal force?",
+    "c": [
+      "9 N",
+      "12 N",
+      "18 N",
+      "36 N"
+    ],
+    "a": 2
   }
 ];

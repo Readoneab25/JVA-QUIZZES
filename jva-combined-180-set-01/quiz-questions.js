@@ -1098,5 +1098,445 @@ const QUESTIONS = [
       "36 N"
     ],
     "a": 2
+  },
+  {
+    "subject": "Biology",
+    "q": "In mosses, root-like structures are called...",
+    "c": [
+      "root hairs",
+      "rootlets",
+      "hyphae",
+      "rhizoids"
+    ],
+    "a": 3
+  },
+  {
+    "subject": "Biology",
+    "q": "Which is NOT true of Spirogyra?",
+    "c": [
+      "conjugation",
+      "fragmentation",
+      "branched filaments",
+      "unbranched filaments"
+    ],
+    "a": 2
+  },
+  {
+    "subject": "Biology",
+    "q": "The diploid multicellular stage in alternation of generations is the...",
+    "c": [
+      "gametophyte",
+      "spermatophyte",
+      "holophyte",
+      "sporophyte"
+    ],
+    "a": 3
+  },
+  {
+    "subject": "Biology",
+    "q": "Bryophytes differ from flowering plants by their...",
+    "c": [
+      "true stems",
+      "asexual reproduction",
+      "lack of vascular tissues",
+      "moist habitats"
+    ],
+    "a": 2
+  },
+  {
+    "subject": "Biology",
+    "q": "Fern sporangia are commonly grouped into...",
+    "c": [
+      "indusia",
+      "fronds",
+      "prothalli",
+      "sori"
+    ],
+    "a": 3
+  },
+  {
+    "subject": "Biology",
+    "q": "Water is needed for moss fertilisation because...",
+    "c": [
+      "they are aquatic",
+      "they lack spores",
+      "male gametes swim to eggs",
+      "they produce spores"
+    ],
+    "a": 2
+  },
+  {
+    "subject": "Biology",
+    "q": "The traditional group Thallophyta included...",
+    "c": [
+      "ferns and mosses",
+      "algae and fungi",
+      "mosses and liverworts",
+      "fungi and ferns"
+    ],
+    "a": 1
+  },
+  {
+    "subject": "Biology",
+    "q": "A fern prothallus corresponds to the moss gametophyte because it...",
+    "c": [
+      "is inconspicuous",
+      "has rhizoids",
+      "bears sexual organs",
+      "is large"
+    ],
+    "a": 2
+  },
+  {
+    "subject": "Biology",
+    "q": "Algae, bryophytes and ferns typically share a need for...",
+    "c": [
+      "seawater",
+      "absence of vascular tissue",
+      "water during fertilisation",
+      "microscopic size"
+    ],
+    "a": 2
+  },
+  {
+    "subject": "Biology",
+    "q": "Fern spores are commonly dispersed by...",
+    "c": [
+      "wind",
+      "insects",
+      "mammals",
+      "roots"
+    ],
+    "a": 0
+  },
+  {
+    "subject": "Biology",
+    "q": "The vascular cambium in a dicot stem produces...",
+    "c": [
+      "only cork",
+      "secondary xylem and phloem",
+      "root hairs",
+      "leaf cuticle"
+    ],
+    "a": 1
+  },
+  {
+    "subject": "Biology",
+    "q": "Cork cambium primarily produces...",
+    "c": [
+      "pollen",
+      "cork cells outward",
+      "xylem vessels",
+      "stomata"
+    ],
+    "a": 1
+  },
+  {
+    "subject": "Biology",
+    "q": "Guard cells differ from most epidermal cells because they...",
+    "c": [
+      "lack nuclei",
+      "lack walls",
+      "lack vacuoles",
+      "contain chloroplasts"
+    ],
+    "a": 3
+  },
+  {
+    "subject": "Biology",
+    "q": "Herbs generally differ from shrubs because herbs...",
+    "c": [
+      "never fruit",
+      "are always annual",
+      "have non-woody stems",
+      "are always perennial"
+    ],
+    "a": 2
+  },
+  {
+    "subject": "Biology",
+    "q": "Which is NOT generally characteristic of monocots?",
+    "c": [
+      "typical secondary thickening",
+      "parallel veins",
+      "scattered vascular bundles",
+      "floral parts in threes"
+    ],
+    "a": 0
+  },
+  {
+    "subject": "Biology",
+    "q": "Which is NOT true of the root piliferous layer?",
+    "c": [
+      "it may bear root hairs",
+      "it is part of the cortex",
+      "it is the outer epidermal layer",
+      "it may break down with age"
+    ],
+    "a": 1
+  },
+  {
+    "subject": "Biology",
+    "q": "Which of these bears seeds?",
+    "c": [
+      "moss",
+      "whistling pine (Casuarina)",
+      "algal filament",
+      "fern"
+    ],
+    "a": 1
+  },
+  {
+    "subject": "Biology",
+    "q": "In a typical angiosperm leaf vascular bundle, xylem lies...",
+    "c": [
+      "beside phloem at same level",
+      "surrounded by phloem",
+      "above phloem",
+      "outside epidermis"
+    ],
+    "a": 2
+  },
+  {
+    "subject": "Biology",
+    "q": "Which vascular plant tissue transports water and dissolved minerals?",
+    "c": [
+      "phloem",
+      "epidermis",
+      "xylem",
+      "cork"
+    ],
+    "a": 2
+  },
+  {
+    "subject": "Biology",
+    "q": "Which pair is fully adapted to terrestrial reproduction without free water for fertilisation?",
+    "c": [
+      "ferns and algae",
+      "ferns and mosses",
+      "bryophytes and flowers",
+      "flowering plants and conifers"
+    ],
+    "a": 3
+  },
+  {
+    "subject": "Biology",
+    "q": "Cold-blooded animals are termed...",
+    "c": [
+      "poikilothermic",
+      "homeothermic",
+      "polythermic",
+      "homeostatic"
+    ],
+    "a": 0
+  },
+  {
+    "subject": "Biology",
+    "q": "Which lacks pentadactyl limbs?",
+    "c": [
+      "bat",
+      "fish",
+      "frog",
+      "pigeon"
+    ],
+    "a": 1
+  },
+  {
+    "subject": "Biology",
+    "q": "Which feature most clearly distinguishes typical bony fish from cartilaginous fish?",
+    "c": [
+      "presence of gills",
+      "presence of fins",
+      "skeleton primarily made of bone",
+      "living in water"
+    ],
+    "a": 2
+  },
+  {
+    "subject": "Biology",
+    "q": "Which shape helps a bony fish move efficiently through water?",
+    "c": [
+      "flattened like a leaf",
+      "streamlined body",
+      "perfectly spherical body",
+      "rectangular body"
+    ],
+    "a": 1
+  },
+  {
+    "subject": "Biology",
+    "q": "Which vertebrate can use its skin for gas exchange?",
+    "c": [
+      "rat",
+      "lizard",
+      "pigeon",
+      "frog"
+    ],
+    "a": 3
+  },
+  {
+    "subject": "Biology",
+    "q": "Which group generally lays yolk-rich shelled eggs?",
+    "c": [
+      "placental mammals",
+      "amphibians",
+      "most bony fishes",
+      "reptiles"
+    ],
+    "a": 3
+  },
+  {
+    "subject": "Biology",
+    "q": "Gill structures that filter particles are called...",
+    "c": [
+      "arches",
+      "filaments",
+      "rakers",
+      "lamellae"
+    ],
+    "a": 2
+  },
+  {
+    "subject": "Biology",
+    "q": "Scales, shelled eggs and bony skulls are shared by...",
+    "c": [
+      "birds and reptiles",
+      "fish and birds",
+      "reptiles and fish",
+      "birds and molluscs"
+    ],
+    "a": 0
+  },
+  {
+    "subject": "Biology",
+    "q": "A major adaptation allowing amphibians to breathe air on land is...",
+    "c": [
+      "lungs replacing larval gills",
+      "webbed toes",
+      "long hind limbs",
+      "tympanum"
+    ],
+    "a": 0
+  },
+  {
+    "subject": "Biology",
+    "q": "Which paired fins help fish steer and balance?",
+    "c": [
+      "dorsal and anal",
+      "pectoral and pelvic",
+      "caudal and dorsal",
+      "anal and caudal"
+    ],
+    "a": 1
+  },
+  {
+    "subject": "Biology",
+    "q": "The main classes of organic food substances are...",
+    "c": [
+      "carbohydrates proteins salts",
+      "salts fats proteins",
+      "fats carbohydrates proteins",
+      "salts fats carbohydrates"
+    ],
+    "a": 2
+  },
+  {
+    "subject": "Biology",
+    "q": "Which element is essential in haemoglobin?",
+    "c": [
+      "sodium",
+      "potassium",
+      "calcium",
+      "iron"
+    ],
+    "a": 3
+  },
+  {
+    "subject": "Biology",
+    "q": "Severe vitamin C deficiency causes...",
+    "c": [
+      "kwashiorkor",
+      "beriberi",
+      "pellagra",
+      "scurvy"
+    ],
+    "a": 3
+  },
+  {
+    "subject": "Biology",
+    "q": "A role of body fat is...",
+    "c": [
+      "producing enzymes",
+      "carrying oxygen",
+      "thermal insulation",
+      "making starch"
+    ],
+    "a": 2
+  },
+  {
+    "subject": "Biology",
+    "q": "Biuret reagent turns violet in the presence of...",
+    "c": [
+      "fats",
+      "starch",
+      "protein",
+      "reducing sugar"
+    ],
+    "a": 2
+  },
+  {
+    "subject": "Biology",
+    "q": "Mineral-culture bottles are darkened to...",
+    "c": [
+      "prevent algal growth",
+      "increase root light",
+      "destroy salts",
+      "heat the roots"
+    ],
+    "a": 0
+  },
+  {
+    "subject": "Biology",
+    "q": "Which vitamin is needed to form visual pigments?",
+    "c": [
+      "vitamin A",
+      "vitamin B12",
+      "vitamin C",
+      "vitamin D"
+    ],
+    "a": 0
+  },
+  {
+    "subject": "Biology",
+    "q": "Sodium hydrogencarbonate in aquatic photosynthesis experiments supplies...",
+    "c": [
+      "oxygen",
+      "nitrogen",
+      "carbon dioxide",
+      "chlorine"
+    ],
+    "a": 2
+  },
+  {
+    "subject": "Biology",
+    "q": "Which set lists elements commonly found in proteins?",
+    "c": [
+      "carbon hydrogen oxygen nitrogen",
+      "sodium chlorine calcium magnesium",
+      "iron zinc copper iodine",
+      "helium neon argon krypton"
+    ],
+    "a": 0
+  },
+  {
+    "subject": "Biology",
+    "q": "At a plant's light-compensation point...",
+    "c": [
+      "photosynthetic CO₂ uptake equals respiratory CO₂ release",
+      "respiration stops",
+      "photosynthesis stops permanently",
+      "oxygen release increases indefinitely"
+    ],
+    "a": 0
   }
 ];

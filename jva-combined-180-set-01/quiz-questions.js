@@ -1538,5 +1538,445 @@ const QUESTIONS = [
       "oxygen release increases indefinitely"
     ],
     "a": 0
+  },
+  {
+    "subject": "Chemistry",
+    "q": "In electrolysis of CuSO₄ with platinum electrodes, litmus near anode turns...",
+    "c": [
+      "blue without gas",
+      "blue with oxygen",
+      "blue with hydrogen",
+      "red with oxygen"
+    ],
+    "a": 3
+  },
+  {
+    "subject": "Chemistry",
+    "q": "During electrolysis of NaOH solution with platinum electrodes, which is correct?",
+    "c": [
+      "Na metal forms",
+      "hydrogen evolves at anode",
+      "NaOH decreases at cathode",
+      "alkalinity increases at cathode"
+    ],
+    "a": 3
+  },
+  {
+    "subject": "Chemistry",
+    "q": "Electrolysis of dilute H₂SO₄ using platinum gives which gases at anode and cathode?",
+    "c": [
+      "sulphur and hydrogen",
+      "hydrogen and oxygen",
+      "oxygen and hydrogen",
+      "oxygen and sulphur"
+    ],
+    "a": 2
+  },
+  {
+    "subject": "Chemistry",
+    "q": "0.1 faraday through CuSO₄ deposits how much Cu? Cu=64",
+    "c": [
+      "64 g",
+      "32 g",
+      "6.4 g",
+      "3.2 g"
+    ],
+    "a": 3
+  },
+  {
+    "subject": "Chemistry",
+    "q": "At the anode of an electrolytic cell occurs...",
+    "c": [
+      "oxidation",
+      "hydrolysis",
+      "dissociation",
+      "reduction"
+    ],
+    "a": 0
+  },
+  {
+    "subject": "Chemistry",
+    "q": "Electrolysing cold NaCl solution with stirring produces a solution containing chiefly...",
+    "c": [
+      "pure NaOH",
+      "chlorine water",
+      "pure water",
+      "sodium hypochlorite"
+    ],
+    "a": 3
+  },
+  {
+    "subject": "Chemistry",
+    "q": "Which is a strong electrolyte?",
+    "c": [
+      "ethyl acetate",
+      "ethanol",
+      "glucose",
+      "sodium methanoate"
+    ],
+    "a": 3
+  },
+  {
+    "subject": "Chemistry",
+    "q": "During electrolysis, anions at the anode...",
+    "c": [
+      "gain electrons",
+      "become cations",
+      "gain protons",
+      "lose electrons"
+    ],
+    "a": 3
+  },
+  {
+    "subject": "Chemistry",
+    "q": "If 48000 C deposits 0.5 mol sodium, charge to deposit 2 mol lead from PbCl₂?",
+    "c": [
+      "48000 C",
+      "96000 C",
+      "192000 C",
+      "384000 C"
+    ],
+    "a": 3
+  },
+  {
+    "subject": "Chemistry",
+    "q": "In electrolysis of aqueous caustic soda, which is correct?",
+    "c": [
+      "oxygen at cathode",
+      "hydrogen at anode",
+      "sodium at anode",
+      "alkalinity increases at cathode"
+    ],
+    "a": 3
+  },
+  {
+    "subject": "Chemistry",
+    "q": "When sodium metal is added to water...",
+    "c": [
+      "reaction is endothermic",
+      "oxygen is evolved",
+      "sodium remains unchanged",
+      "heat is released"
+    ],
+    "a": 3
+  },
+  {
+    "subject": "Chemistry",
+    "q": "A reaction that absorbs heat is...",
+    "c": [
+      "thermodynamic",
+      "exothermic",
+      "isothermal",
+      "endothermic"
+    ],
+    "a": 3
+  },
+  {
+    "subject": "Chemistry",
+    "q": "For 3C + 2Fe₂O₃ → 4Fe + 3CO₂, ΔH=+46 kJ. Reaction is...",
+    "c": [
+      "adiabatic",
+      "isobaric",
+      "endothermic",
+      "exothermic"
+    ],
+    "a": 2
+  },
+  {
+    "subject": "Chemistry",
+    "q": "An endothermic reaction has...",
+    "c": [
+      "heat liberated and negative ΔH",
+      "heat liberated and positive ΔH",
+      "heat absorbed and negative ΔH",
+      "heat absorbed and positive ΔH"
+    ],
+    "a": 3
+  },
+  {
+    "subject": "Chemistry",
+    "q": "If dissolution has positive ΔH, it is...",
+    "c": [
+      "catalysed",
+      "complete",
+      "exothermic",
+      "endothermic"
+    ],
+    "a": 3
+  },
+  {
+    "subject": "Chemistry",
+    "q": "0.16 g methane heats 100 g water by 40°C, c=4.2 J/g°C. Enthalpy of combustion per mole?",
+    "c": [
+      "−1160 kJ/mol",
+      "−1180 kJ/mol",
+      "−1560 kJ/mol",
+      "−1680 kJ/mol"
+    ],
+    "a": 3
+  },
+  {
+    "subject": "Chemistry",
+    "q": "Reaction I releases 286 kJ and reaction II releases 406 kJ. Which is true?",
+    "c": [
+      "I absorbs more",
+      "II absorbs heat",
+      "I evolves less heat",
+      "II must be faster"
+    ],
+    "a": 2
+  },
+  {
+    "subject": "Chemistry",
+    "q": "Dissolving NaNO₂ with positive ΔH is...",
+    "c": [
+      "exothermic",
+      "endothermic",
+      "isothermal",
+      "isomeric"
+    ],
+    "a": 1
+  },
+  {
+    "subject": "Chemistry",
+    "q": "If neutralising 1 mol NaOH with HCl releases 57.3 kJ, 2 mol NaOH with H₂SO₄ releases...",
+    "c": [
+      "+28.65 kJ",
+      "−28.65 kJ",
+      "+57.3 kJ",
+      "−114.6 kJ"
+    ],
+    "a": 3
+  },
+  {
+    "subject": "Chemistry",
+    "q": "Given ΔHf(CO₂)=−393 and ΔHf(CO)=−110.4 kJ/mol, ΔH for CO+½O₂→CO₂ is...",
+    "c": [
+      "−503.7 kJ",
+      "+503.7 kJ",
+      "−282.6 kJ",
+      "+282.6 kJ"
+    ],
+    "a": 2
+  },
+  {
+    "subject": "Chemistry",
+    "q": "Which gas is already fully oxidised and cannot burn further in oxygen under ordinary conditions?",
+    "c": [
+      "carbon monoxide",
+      "hydrogen",
+      "sulphur dioxide",
+      "carbon dioxide"
+    ],
+    "a": 3
+  },
+  {
+    "subject": "Chemistry",
+    "q": "An unknown liquid reacts with Na₂CO₃ producing CO₂ that turns limewater milky. It is...",
+    "c": [
+      "Na₂SO₄ solution",
+      "KI solution",
+      "alkali",
+      "acid"
+    ],
+    "a": 3
+  },
+  {
+    "subject": "Chemistry",
+    "q": "Which statement is false?",
+    "c": [
+      "Lead is heavier atomically than copper",
+      "Sodium reacts with water to release oxygen",
+      "CO₂ dissolves in water",
+      "CO can act as a reducing agent"
+    ],
+    "a": 1
+  },
+  {
+    "subject": "Chemistry",
+    "q": "Limewater is a dilute aqueous solution of...",
+    "c": [
+      "Ca(OH)₂",
+      "CaCO₃",
+      "CaSO₄",
+      "Na₂CO₃"
+    ],
+    "a": 0
+  },
+  {
+    "subject": "Chemistry",
+    "q": "Which statement about CO is NOT true?",
+    "c": [
+      "it is poisonous",
+      "it readily oxidises in air at room temperature",
+      "it can reduce metal oxides",
+      "it burns when ignited"
+    ],
+    "a": 1
+  },
+  {
+    "subject": "Chemistry",
+    "q": "Zinc oxide reacts with both acidic and basic reagents. It is...",
+    "c": [
+      "neutral",
+      "basic only",
+      "acidic only",
+      "amphoteric"
+    ],
+    "a": 3
+  },
+  {
+    "subject": "Chemistry",
+    "q": "Which is a neutral oxide?",
+    "c": [
+      "Al₂O₃",
+      "NO₂",
+      "CO₂",
+      "CO"
+    ],
+    "a": 3
+  },
+  {
+    "subject": "Chemistry",
+    "q": "To remove oxygen from an oxygen-nitrogen mixture without consuming nitrogen, pass it over heated...",
+    "c": [
+      "KOH",
+      "gold",
+      "magnesium",
+      "phosphorus"
+    ],
+    "a": 3
+  },
+  {
+    "subject": "Chemistry",
+    "q": "A shell reacts with dilute HCl to release CO₂. It contains...",
+    "c": [
+      "NaCl",
+      "NH₄NO₃",
+      "CaCO₃",
+      "CaCl₂"
+    ],
+    "a": 2
+  },
+  {
+    "subject": "Chemistry",
+    "q": "Which conducts electricity?",
+    "c": [
+      "sulphur",
+      "graphite",
+      "diamond",
+      "red phosphorus"
+    ],
+    "a": 1
+  },
+  {
+    "subject": "Chemistry",
+    "q": "Which carbonate is stable to heat under ordinary laboratory heating?",
+    "c": [
+      "ammonium carbonate",
+      "calcium carbonate",
+      "magnesium carbonate",
+      "potassium carbonate"
+    ],
+    "a": 3
+  },
+  {
+    "subject": "Chemistry",
+    "q": "Which compound normally gives nitrous oxide and water rather than oxygen when gently heated?",
+    "c": [
+      "manganese dioxide",
+      "hydrogen peroxide",
+      "sodium nitrate",
+      "ammonium nitrate"
+    ],
+    "a": 3
+  },
+  {
+    "subject": "Chemistry",
+    "q": "The bubbles from an opened fizzy drink are mainly...",
+    "c": [
+      "hydrogen",
+      "carbon monoxide",
+      "carbon dioxide",
+      "chlorine"
+    ],
+    "a": 2
+  },
+  {
+    "subject": "Chemistry",
+    "q": "A gas extinguishes a glowing splint and makes Ba(OH)₂ solution cloudy. It is...",
+    "c": [
+      "methane",
+      "hydrogen chloride",
+      "hydrogen",
+      "carbon dioxide"
+    ],
+    "a": 3
+  },
+  {
+    "subject": "Chemistry",
+    "q": "Concentrated sulphuric acid used to prepare CO from ethanedioic acid acts as...",
+    "c": [
+      "oxidising agent",
+      "reducing agent",
+      "dehydrating agent",
+      "base"
+    ],
+    "a": 2
+  },
+  {
+    "subject": "Chemistry",
+    "q": "An amphoteric oxide behaves as...",
+    "c": [
+      "metal only",
+      "nonmetal only",
+      "insoluble oxide only",
+      "both acid and base"
+    ],
+    "a": 3
+  },
+  {
+    "subject": "Chemistry",
+    "q": "Destructive distillation of coal yields...",
+    "c": [
+      "ethanoic acid",
+      "carbonic acid",
+      "producer gas only",
+      "coke and ammonia liquor"
+    ],
+    "a": 3
+  },
+  {
+    "subject": "Chemistry",
+    "q": "A metallic oxide reacts with both HCl and NaOH to form salt and water. It is...",
+    "c": [
+      "acidic",
+      "basic",
+      "neutral",
+      "amphoteric"
+    ],
+    "a": 3
+  },
+  {
+    "subject": "Chemistry",
+    "q": "Coal fires in poorly ventilated rooms are dangerous because of...",
+    "c": [
+      "harmless CO₂",
+      "excessive heat only",
+      "poisonous CO accumulation",
+      "loss of nitrogen"
+    ],
+    "a": 2
+  },
+  {
+    "subject": "Chemistry",
+    "q": "Which carbonate can be melted without decomposing under ordinary conditions?",
+    "c": [
+      "Na₂CO₃",
+      "CaCO₃",
+      "MgCO₃",
+      "ZnCO₃"
+    ],
+    "a": 0
   }
 ];

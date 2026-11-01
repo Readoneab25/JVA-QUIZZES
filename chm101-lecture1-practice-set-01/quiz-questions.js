@@ -1,4 +1,4 @@
-/* CHM 101 Lecture Note 1, pages 1–5. Thirty original MCQs. */
+/* Public questions only. Correct answers are held by the server grader. */
 window.QUESTIONS=[
   {
     "subject": "VSEPR & Hybridisation",
@@ -8,8 +8,7 @@ window.QUESTIONS=[
       "The mass of an atomic nucleus",
       "The colour of a solid",
       "The rate of a chemical reaction"
-    ],
-    "a": 0
+    ]
   },
   {
     "subject": "VSEPR & Hybridisation",
@@ -19,8 +18,7 @@ window.QUESTIONS=[
       "increase their attraction",
       "form the maximum number of pi bonds",
       "minimise repulsion"
-    ],
-    "a": 3
+    ]
   },
   {
     "subject": "VSEPR & Hybridisation",
@@ -30,8 +28,7 @@ window.QUESTIONS=[
       "Number of double bonds only",
       "Bonded atoms minus lone pairs",
       "Total electrons in the molecule"
-    ],
-    "a": 0
+    ]
   },
   {
     "subject": "VSEPR & Hybridisation",
@@ -41,8 +38,7 @@ window.QUESTIONS=[
       "no electron domain",
       "one electron domain",
       "three electron domains"
-    ],
-    "a": 2
+    ]
   },
   {
     "subject": "VSEPR & Hybridisation",
@@ -52,8 +48,7 @@ window.QUESTIONS=[
       "3",
       "4",
       "2"
-    ],
-    "a": 2
+    ]
   },
   {
     "subject": "VSEPR & Hybridisation",
@@ -63,8 +58,7 @@ window.QUESTIONS=[
       "Tetrahedral",
       "Bent",
       "Trigonal pyramidal"
-    ],
-    "a": 1
+    ]
   },
   {
     "subject": "VSEPR & Hybridisation",
@@ -74,8 +68,7 @@ window.QUESTIONS=[
       "180°",
       "90°",
       "109.5°"
-    ],
-    "a": 3
+    ]
   },
   {
     "subject": "VSEPR & Hybridisation",
@@ -85,8 +78,7 @@ window.QUESTIONS=[
       "Tetrahedral",
       "Linear",
       "Trigonal planar"
-    ],
-    "a": 0
+    ]
   },
   {
     "subject": "VSEPR & Hybridisation",
@@ -96,8 +88,7 @@ window.QUESTIONS=[
       "0",
       "1",
       "3"
-    ],
-    "a": 0
+    ]
   },
   {
     "subject": "VSEPR & Hybridisation",
@@ -107,8 +98,7 @@ window.QUESTIONS=[
       "109.5°",
       "180°",
       "120°"
-    ],
-    "a": 0
+    ]
   },
   {
     "subject": "VSEPR & Hybridisation",
@@ -118,8 +108,7 @@ window.QUESTIONS=[
       "Trigonal planar, 120°",
       "Bent, about 104.5°",
       "Trigonal pyramidal, about 107°"
-    ],
-    "a": 3
+    ]
   },
   {
     "subject": "VSEPR & Hybridisation",
@@ -129,8 +118,7 @@ window.QUESTIONS=[
       "sp²",
       "sp³",
       "sp³d"
-    ],
-    "a": 0
+    ]
   },
   {
     "subject": "VSEPR & Hybridisation",
@@ -140,8 +128,7 @@ window.QUESTIONS=[
       "four sp³ orbitals",
       "five sp³d orbitals",
       "three sp² orbitals"
-    ],
-    "a": 3
+    ]
   },
   {
     "subject": "VSEPR & Hybridisation",
@@ -151,8 +138,7 @@ window.QUESTIONS=[
       "Hydrogen bond",
       "Ionic bond",
       "Pi (π) bond"
-    ],
-    "a": 3
+    ]
   },
   {
     "subject": "VSEPR & Hybridisation",
@@ -162,8 +148,7 @@ window.QUESTIONS=[
       "Trigonal bipyramidal",
       "Octahedral",
       "Square planar"
-    ],
-    "a": 1
+    ]
   },
   {
     "subject": "VSEPR & Hybridisation",
@@ -173,8 +158,7 @@ window.QUESTIONS=[
       "Tetrahedral",
       "Octahedral",
       "Linear"
-    ],
-    "a": 2
+    ]
   },
   {
     "subject": "Solid-State Forces",
@@ -184,8 +168,7 @@ window.QUESTIONS=[
       "Free movement of protons",
       "Electrostatic attraction between oppositely charged ions",
       "Weak London forces between neutral molecules"
-    ],
-    "a": 2
+    ]
   },
   {
     "subject": "Solid-State Forces",
@@ -195,8 +178,7 @@ window.QUESTIONS=[
       "Its bonds disappear below melting point",
       "Its lattice contains only molecules",
       "Its electrons have no charge"
-    ],
-    "a": 0
+    ]
   },
   {
     "subject": "Solid-State Forces",
@@ -206,8 +188,7 @@ window.QUESTIONS=[
       "Metal cations surrounded by mobile electrons",
       "Free ions dissolved in water",
       "Separate molecules held by weak forces"
-    ],
-    "a": 0
+    ]
   },
   {
     "subject": "Solid-State Forces",
@@ -217,8 +198,7 @@ window.QUESTIONS=[
       "It consists only of isolated molecules",
       "It has delocalised electrons between layers",
       "It melts easily"
-    ],
-    "a": 2
+    ]
   },
   {
     "subject": "Solid-State Forces",
@@ -228,8 +208,7 @@ window.QUESTIONS=[
       "Brittleness caused by fixed oppositely charged ions",
       "Malleability and good electrical conductivity",
       "Softness due to weak molecular forces"
-    ],
-    "a": 2
+    ]
   },
   {
     "subject": "Solid-State Forces",
@@ -239,8 +218,7 @@ window.QUESTIONS=[
       "Solid CO₂",
       "Sodium chloride",
       "Copper"
-    ],
-    "a": 1
+    ]
   },
   {
     "subject": "Solid-State Forces",
@@ -250,8 +228,7 @@ window.QUESTIONS=[
       "6",
       "4",
       "8"
-    ],
-    "a": 3
+    ]
   },
   {
     "subject": "Solid-State Forces",
@@ -261,8 +238,7 @@ window.QUESTIONS=[
       "2",
       "3",
       "4"
-    ],
-    "a": 3
+    ]
   },
   {
     "subject": "Chemical Bonding & Forces",
@@ -272,8 +248,7 @@ window.QUESTIONS=[
       "Intramolecular forces act within molecules; intermolecular forces act between molecules",
       "Intramolecular forces occur only in solids",
       "Intermolecular forces join protons within nuclei"
-    ],
-    "a": 1
+    ]
   },
   {
     "subject": "Chemical Bonding & Forces",
@@ -283,8 +258,7 @@ window.QUESTIONS=[
       "instantaneous dipoles caused by electron movement",
       "transfer of neutrons between atoms",
       "permanent ionic charges"
-    ],
-    "a": 1
+    ]
   },
   {
     "subject": "Chemical Bonding & Forces",
@@ -294,8 +268,7 @@ window.QUESTIONS=[
       "Only highly charged ions",
       "Only molecules containing O–H bonds",
       "Non-polar molecules"
-    ],
-    "a": 3
+    ]
   },
   {
     "subject": "Chemical Bonding & Forces",
@@ -305,8 +278,7 @@ window.QUESTIONS=[
       "Molecules with permanent dipoles",
       "Two metal cations",
       "Non-polar atoms with no charge fluctuations"
-    ],
-    "a": 1
+    ]
   },
   {
     "subject": "Chemical Bonding & Forces",
@@ -316,8 +288,7 @@ window.QUESTIONS=[
       "Iron, copper or zinc",
       "Carbon, silicon or germanium",
       "Sodium, potassium or calcium"
-    ],
-    "a": 0
+    ]
   },
   {
     "subject": "Chemical Bonding & Forces",
@@ -327,7 +298,6 @@ window.QUESTIONS=[
       "Hydrogen bonding",
       "Metallic bonding",
       "Polar covalent bonding"
-    ],
-    "a": 2
+    ]
   }
 ];

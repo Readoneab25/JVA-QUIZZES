@@ -1,0 +1,2 @@
+Redeploy trigger 2026-11-01T10:40Z
+Reason: pages deployment stuck after c8c0b18; live site still serving 8919-byte index without review color classes while main has 11029-byte color-coded index.html.

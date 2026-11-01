@@ -1,0 +1,1 @@
+window.QUIZ_CONFIG={id:"sanctumvault-chm101-lecture1-set-02",title:"CHM 101 — Lecture Note 1 | Practice Set 02",timeMinutes:30,supabaseUrl:"https://mgmckntsfukikkmwdsee.supabase.co",publishableKey:"sb_publishable_msspxVHxSKf9lZ6oXR-nbw_Ds3QLUTM",ready:true};

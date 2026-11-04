@@ -1,0 +1,1 @@
+window.QUIZ_CONFIG={id:"sanctumvault-phy101-space-time-set-02",title:"PHY 101 — Space, Time & Space-Time | Practice Set 02",timeMinutes:20,supabaseUrl:"https://mgmckntsfukikkmwdsee.supabase.co",publishableKey:"sb_publishable_msspxVHxSKf9lZ6oXR-nbw_Ds3QLUTM",ready:true};

@@ -1,0 +1,1 @@
+window.QUIZ_CONFIG={id:"sanctumvault-chm101-radioactivity-set-03",title:"CHM 101 — Radioactivity (Dr. Rajee) | Practice Set 03",timeMinutes:20,supabaseUrl:"https://mgmckntsfukikkmwdsee.supabase.co",publishableKey:"sb_publishable_msspxVHxSKf9lZ6oXR-nbw_Ds3QLUTM",ready:true};

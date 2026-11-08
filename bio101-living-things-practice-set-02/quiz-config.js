@@ -1,0 +1,1 @@
+window.QUIZ_CONFIG={id:"sanctumvault-bio101-living-things-set-02",title:"BIO 101 — Living Things, Characteristics & Reproduction | Practice Set 02",timeMinutes:20,supabaseUrl:"https://mgmckntsfukikkmwdsee.supabase.co",publishableKey:"sb_publishable_msspxVHxSKf9lZ6oXR-nbw_Ds3QLUTM",ready:true};

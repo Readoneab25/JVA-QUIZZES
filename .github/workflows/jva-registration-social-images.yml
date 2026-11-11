@@ -1,0 +1,64 @@
+name: Generate JVA registration sharing images
+on:
+  push:
+    paths:
+      - '.github/workflows/jva-registration-social-images.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build-images:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Render the existing JVA logo into social preview images
+        run: |
+          python -m pip install --disable-pip-version-check cairosvg Pillow
+          python - <<'PY'
+          from pathlib import Path
+          from io import BytesIO
+          from PIL import Image, ImageDraw, ImageFont
+          import cairosvg
+
+          base = Path("jva-management-register")
+          svg = (base / "jva-logo.svg").read_bytes()
+          logo_data = cairosvg.svg2png(bytestring=svg, output_width=512, output_height=512)
+          logo = Image.open(BytesIO(logo_data)).convert("RGBA")
+          logo.save(base / "jva-logo.png", optimize=True)
+
+          w, h = 1200, 630
+          im = Image.new("RGB", (w, h), "#f6f3e9")
+          d = ImageDraw.Draw(im)
+          d.ellipse((820,-300,1420,300), fill="#d9f4f0")
+          d.ellipse((-250,450,300,910), fill="#e7efeb")
+          d.rounded_rectangle((46,46,w-46,h-46), radius=35, fill="#fffdf7", outline="#b8d9d6", width=3)
+          d.rounded_rectangle((46,46,w-46,60), radius=6, fill="#13aebc")
+          logo.thumbnail((350,350), Image.Resampling.LANCZOS)
+          im.paste(logo,(104,132),logo)
+          d.line((495,145,495,490), fill="#add9d8",width=3)
+          font_candidates=["/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf","/usr/share/fonts/truetype/liberation2/LiberationSans-Bold.ttf"]
+          regular_candidates=["/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf","/usr/share/fonts/truetype/liberation2/LiberationSans-Regular.ttf"]
+          font_path=next(p for p in font_candidates if Path(p).exists())
+          regular_path=next(p for p in regular_candidates if Path(p).exists())
+          title=ImageFont.truetype(font_path,52)
+          secondary=ImageFont.truetype(font_path,30)
+          sub=ImageFont.truetype(regular_path,25)
+          d.text((535,165),"JVA MANAGEMENT",font=secondary,fill="#137581")
+          d.text((535,233),"Student Profile",font=title,fill="#162528")
+          d.text((535,308),"Registration",font=title,fill="#162528")
+          d.rounded_rectangle((533,400,1030,466),radius=18,fill="#d8f7f3")
+          d.text((552,420),"JAMB VANGUARD ACADEMY",font=sub,fill="#154e55")
+          im.save(base / "share-preview.png", optimize=True)
+          PY
+      - name: Commit only the generated image assets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add jva-management-register/jva-logo.png jva-management-register/share-preview.png
+          if ! git diff --cached --quiet; then
+            git commit -m "Add PNG JVA logo and registration share preview"
+            git push
+          fi

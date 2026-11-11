@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#f6f3e9">
+<meta name="theme-color" content="#f6f3e9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0d171a" media="(prefers-color-scheme: dark)">
 <meta name="robots" content="noindex,nofollow,noarchive">
 <title>JVA | Student Profile Registration</title>
 <meta name="description" content="JAMB Vanguard Academy (JVA) Student Profile Registration portal.">
@@ -77,6 +78,46 @@ input[type=date]{color-scheme:light}
 .status{font-size:12px;color:#117b59;min-height:18px;margin:12px 0 0}.status.error{color:#b22d46}
 @media(max-width:740px){.layout{grid-template-columns:1fr}.page{padding:15px 12px 35px}.panel{padding:18px}.toolbar{grid-template-columns:1fr 1fr}.toolbar input{grid-column:1/-1}.header{margin-top:5px}.entry{flex-direction:column}.entry-buttons{justify-content:start}}
 @media(max-width:340px){.subject-list{grid-template-columns:1fr}}
+
+/* Follow the phone's system appearance; keep the printed slip cream and cyan. */
+@media screen and (prefers-color-scheme: dark){
+:root{color-scheme:dark;color:#edf7f4;background:#0d171a}
+body{color:#edf7f4;background:radial-gradient(ellipse at 90% 3%,rgba(21,181,192,.15),transparent 43%),radial-gradient(ellipse at 4% 83%,rgba(39,109,111,.12),transparent 41%),#0d171a}
+.mark{background:#15272a;color:#f6f3e9;border-color:#42777a;box-shadow:4px 5px 0 #168b97,0 12px 25px #0007}
+.eyebrow{color:#75d9e1}
+.header h1{color:#f3f8f6}
+.lead{color:#a9bdbb}
+.panel{background:#18262a;border-color:#335055;box-shadow:0 3px 0 #194c51,0 17px 38px #0005}
+.panel h2{color:#f0f8f5}
+.sub,.hint,.small{color:#aec2bf}
+label.field{color:#e3f1ef}
+input[type=text],input[type=date],input[type=search]{background:#111e22;border-color:#456368;color:#f4faf8;color-scheme:dark}
+input::placeholder{color:#94a9a8}
+input:focus-visible,button:focus-visible{outline-color:#62d7e1}
+.choice{background:#1d3034;border-color:#3b575b;color:#e2f2f0}
+.choice:has(input:checked){background:#173e43;border-color:#43c6d1;box-shadow:inset 3px 0 0 #54d4df}
+.choice input{accent-color:#61d1dc}
+.button{background:linear-gradient(125deg,#49c6cf,#80dfe5);color:#102326;border-color:#3bc0c9;box-shadow:0 4px 0 #12606a,0 11px 20px #0005}
+.secondary{background:#254045;border-color:#4c858b;color:#e6f8f6}
+.secondary:hover:not(:disabled),.mini:hover{background:#30585e}
+.code-box{border-color:#3c9fa7;background:linear-gradient(145deg,#153b42,#1c3032);box-shadow:inset 0 0 0 3px #2c626333}
+.code{color:#bbf6f7}
+.code.empty{color:#afc4c3}
+.details{color:#d1e5e2}
+.details strong{color:#f3faf7}
+.count{background:#204950;color:#9cebf1}
+.entry{background:#152327;border-color:#36565b}
+.entry h3{color:#f2faf7}
+.entry .meta{color:#b1c6c3}
+.entry code{color:#90e9ef}
+.mini{background:#244148;border-color:#43777d;color:#e2f5f3}
+.mini.delete{background:#43282e;border-color:#915460;color:#ffc4cd}
+.empty-history{border-color:#4b696c;color:#b5c8c6}
+.status{color:#9deac3}
+.status.error{color:#ffb9c3}
+.header-logo{background:#fffdf6}
+}
+
 /* Separate A4 student registration slip */
 #printSheet{display:none}
 @page{size:A4;margin:14mm}

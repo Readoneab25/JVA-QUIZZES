@@ -9,6 +9,7 @@
 <title>JVA | Student Profile Registration</title>
 <meta name="description" content="JAMB Vanguard Academy (JVA) Student Profile Registration portal.">
 <link rel="canonical" href="https://jva-profile-registration.pages.dev/">
+<link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/svg+xml" href="jva-logo.svg">
 <link rel="icon" type="image/png" sizes="512x512" href="jva-logo.png">
 <link rel="apple-touch-icon" sizes="512x512" href="jva-logo.png">
@@ -118,11 +119,14 @@ input:focus-visible,button:focus-visible{outline-color:#62d7e1}
 .header-logo{background:#fffdf6}
 }
 
+#offlineInfo{margin:8px 0 14px;color:#147782;font-weight:650}
+@media screen and (prefers-color-scheme: dark){#offlineInfo{color:#8be5e8}}
 /* Separate A4 student registration slip */
 #printSheet{display:none}
 @page{size:A4;margin:14mm}
 @media print{
 html,body{background:#fff!important;color:#142326!important;margin:0;padding:0}
+#offlineInfo{display:none!important}
 .page{display:none!important}
 #printSheet{display:block!important;width:100%;background:#fffdf6;color:#142326;font-family:Arial,Helvetica,sans-serif;print-color-adjust:exact;-webkit-print-color-adjust:exact}
 .slip{border:1.7px solid #17282b;border-radius:8px;padding:23px 27px;position:relative;min-height:238mm;background:#fffdf6;box-shadow:inset 0 0 0 5px #e7f9f5}
@@ -151,6 +155,7 @@ html,body{background:#fff!important;color:#142326!important;margin:0;padding:0}
 <body>
 <main class="page">
 <header class="header"><div class="mark"><img src="jva-logo.svg" alt="JVA logo" class="header-logo"></div><div><div class="eyebrow">JAMB Vanguard Academy</div><h1>Student Profile Registration</h1></div></header>
+<p class="sub" id="offlineInfo">Offline access is prepared automatically on your first online visit. Once saved, this page can be reopened without mobile data.</p>
 <div class="layout">
 <section class="panel" aria-labelledby="registerTitle">
 <h2 id="registerTitle">New registration</h2>
@@ -239,6 +244,27 @@ $("form").addEventListener("submit",e=>{e.preventDefault();const name=$("student
 $("search").addEventListener("input",renderHistory);$("copyLatest").addEventListener("click",()=>latest&&copyValue(latest.code));$("printLatest").addEventListener("click",()=>printSlip(latest));$("export").addEventListener("click",exportBackup);$("import").addEventListener("click",()=>$("importFile").click());$("importFile").addEventListener("change",e=>importBackup(e.target.files[0]));
 renderSubjects();$("registrationDate").value=dateToday();records=getRecords();showLatest(records[records.length-1]||null);renderHistory();
 })();
+</script>
+<script>
+/* Keep the existing generator completely local; cache only static page assets. */
+if ("serviceWorker" in navigator && window.isSecureContext) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./service-worker.js", {scope:"./"})
+      .then(registration => {
+        const ready = () => {
+          const label = document.getElementById("offlineInfo");
+          if (label) label.textContent = "Offline access is ready on this device. You can reopen this page without mobile data.";
+        };
+        if (navigator.serviceWorker.controller || registration.active) ready();
+        else navigator.serviceWorker.ready.then(ready).catch(() => {});
+      })
+      .catch(error => {
+        console.warn("Offline setup was not completed:", error);
+        const label = document.getElementById("offlineInfo");
+        if (label) label.textContent = "Offline setup is unavailable in this browser. Keep internet on when opening the website.";
+      });
+  });
+}
 </script>
 </body>
 </html>

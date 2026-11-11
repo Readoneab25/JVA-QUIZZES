@@ -84,11 +84,12 @@ html,body{background:#fff!important;color:#142326!important;margin:0;padding:0}
 .slip-subject{font-size:12px;border:1px solid #bbd8d4;border-radius:5px;padding:13px 11px;min-height:44px;background:#f1f8f4;color:#132b2c}
 .slip-foot{position:absolute;bottom:25px;left:27px;right:27px;border-top:1px solid #a7c7c4;padding-top:10px;display:flex;justify-content:space-between;font-size:10px;color:#41666b;gap:10px}
 }
+.header-logo{display:block;width:100%;height:100%;object-fit:contain;border-radius:11px;background:#fffdf6;padding:3px}
 </style>
 </head>
 <body>
 <main class="page">
-<header class="header"><div class="mark" aria-hidden="true">JVA</div><div><div class="eyebrow">JAMB Vanguard Academy</div><h1>Student Profile Registration</h1></div></header>
+<header class="header"><div class="mark"><img src="jva-logo.svg" alt="JVA logo" class="header-logo"></div><div><div class="eyebrow">JAMB Vanguard Academy</div><h1>Student Profile Registration</h1></div></header>
 <div class="layout">
 <section class="panel" aria-labelledby="registerTitle">
 <h2 id="registerTitle">New registration</h2>
@@ -124,7 +125,7 @@ html,body{background:#fff!important;color:#142326!important;margin:0;padding:0}
 <section id="printSheet" aria-label="Printable JVA student registration slip">
   <div class="slip">
     <div class="slip-top">
-      <img class="slip-logo" src="../jamb-jva-english-set-02/logo.svg" alt="JVA logo">
+      <img class="slip-logo" src="jva-logo.svg" alt="JVA logo">
       <div><div class="slip-brand">JAMB VANGUARD<br>ACADEMY</div><div class="slip-small">JVA STUDENT REGISTRATION</div></div>
     </div>
     <div class="slip-title">
@@ -137,7 +138,7 @@ html,body{background:#fff!important;color:#142326!important;margin:0;padding:0}
     <div class="slip-field"><div class="slip-field-label">Registration Date</div><div class="slip-field-value" id="slipDate"></div></div>
     <div class="slip-section-title">Registered subject combination</div>
     <div class="slip-subjects" id="slipSubjects"></div>
-    <div class="slip-foot"><span>JAMB VANGUARD ACADEMY &nbsp; | &nbsp; REGISTRATION OFFICE</span><span id="slipFooterCode"></span></div>
+    <div class="slip-foot"><span>JAMB VANGUARD ACADEMY &nbsp; | &nbsp; ONLINE REGISTRATION</span><span id="slipFooterCode"></span></div>
   </div>
 </section>
 <script>

@@ -40,13 +40,39 @@ input:focus-visible,button:focus-visible{outline:2px solid #7fe5e9;outline-offse
 .foot{color:#989fc2;font-size:11px;line-height:1.7;margin-top:20px}
 @media(max-width:740px){.layout{grid-template-columns:1fr}.page{padding:15px 12px 35px}.panel{padding:17px}.toolbar{grid-template-columns:1fr 1fr}.toolbar input{grid-column:1/-1}.header{margin-top:5px}.entry{flex-direction:column}.entry-buttons{justify-content:start}}
 @media(max-width:340px){.subject-list{grid-template-columns:1fr}}
-@media print{body{background:#fff;color:#111}.page,.panel{padding:0;box-shadow:none;border:0}.header,.lead,.layout>.panel:first-child,.history,.notice,.actions,.foot,#status{display:none!important}.layout{display:block;margin:0}.layout>.panel:last-child{display:block}.code-box{border:1px solid #222;background:#fff;color:#111}.code,.details,.details strong,.small{color:#111}#lastTitle{font-size:22px}}
+/* The registration slip is a separate, A4 print-only document. */
+#printSheet{display:none}
+@page{size:A4;margin:14mm}
+@media print{
+html,body{background:#fff!important;color:#141a2e!important;margin:0;padding:0}
+.page{display:none!important}
+#printSheet{display:block!important;width:100%;background:#fff;color:#17213c;font-family:Arial,Helvetica,sans-serif;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+.slip{border:2px solid #17254a;border-radius:8px;padding:22px 26px;position:relative;min-height:238mm}
+.slip-top{display:flex;align-items:center;gap:16px;border-bottom:3px solid #17254a;padding-bottom:17px}
+.slip-logo{height:78px;width:78px;object-fit:contain}
+.slip-brand{font-size:23px;letter-spacing:.6px;font-weight:800;line-height:1.15}
+.slip-small{font-size:10px;letter-spacing:2px;font-weight:700;color:#465578;margin-top:5px}
+.slip-title{text-align:center;margin:25px 0 18px}
+.slip-title h2{font-size:20px;margin:0 0 7px;text-transform:uppercase;letter-spacing:1px}
+.slip-title p{margin:0;color:#52617b;font-size:12px}
+.slip-code{border:1.5px solid #314776;border-radius:5px;text-align:center;padding:13px 12px;margin-bottom:25px}
+.slip-code-label{font-size:10px;letter-spacing:1.4px;color:#53607a;font-weight:700}
+.slip-code-value{font-size:23px;font-weight:800;letter-spacing:1.3px;margin-top:7px;overflow-wrap:anywhere}
+.slip-section-title{font-weight:800;color:#17254a;font-size:12px;text-transform:uppercase;letter-spacing:.7px;border-bottom:1px solid #b5c0d4;padding-bottom:8px;margin:20px 0 10px}
+.slip-field{display:grid;grid-template-columns:145px 1fr;padding:12px 0;border-bottom:1px solid #e2e6ef;gap:10px;font-size:13px}
+.slip-field-label{font-weight:700;color:#53617b}
+.slip-field-value{font-weight:700;overflow-wrap:anywhere}
+.slip-subjects{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:13px}
+.slip-subject{font-size:12px;border:1px solid #d2d9e6;border-radius:4px;padding:12px 10px;min-height:40px}
+.slip-sign{display:grid;grid-template-columns:1fr 1fr;gap:35px;margin-top:65px}
+.slip-line{border-top:1px solid #596680;padding-top:9px;font-size:11px;text-align:center;color:#45516e}
+.slip-foot{position:absolute;bottom:25px;left:26px;right:26px;border-top:1px solid #c2c9d7;padding-top:10px;display:flex;justify-content:space-between;font-size:10px;color:#52607a;gap:10px}
+}
 </style>
 </head>
 <body>
 <main class="page">
 <header class="header"><div class="mark" aria-hidden="true">JVA</div><div><div class="eyebrow">JAMB Vanguard Academy</div><h1>Student Profile Registration</h1></div></header>
-<p class="lead">Management registration desk. Enter a student's details, select a registration date and subject combination, then generate a JVA profile code. All history is saved only in this browser on this device.</p>
 <div class="layout">
 <section class="panel" aria-labelledby="registerTitle">
 <h2 id="registerTitle">New registration</h2>
@@ -69,7 +95,6 @@ input:focus-visible,button:focus-visible{outline:2px solid #7fe5e9;outline-offse
 <div class="code-box"><div class="eyebrow" id="codeLabel">PROFILE CODE</div><div class="code empty" id="generatedCode">No code generated yet</div></div>
 <div class="details" id="latestDetails"><span>Generated registrations will appear here.</span></div>
 <div class="actions"><button type="button" id="copyLatest" class="secondary" disabled>Copy Code</button><button type="button" id="printLatest" class="secondary" disabled>Print Slip</button></div>
-<div class="notice"><strong>Important:</strong> A profile code is an internal JVA registration reference, not a JAMB-issued PIN or admission number. A code alone is not proof of identity.</div>
 </section>
 </div>
 <section class="panel history" aria-labelledby="historyTitle">
@@ -79,8 +104,27 @@ input:focus-visible,button:focus-visible{outline:2px solid #7fe5e9;outline-offse
 <input id="importFile" type="file" accept=".json,application/json" hidden>
 <div id="historyItems"></div>
 </section>
-<p class="foot">Private-use link, not password-protected. Anyone using this browser profile can view locally stored records. GitHub Pages hosts only the website files; no student details are uploaded by this application. Backups contain students' names and subject combinations—store them securely.</p>
 </main>
+<section id="printSheet" aria-label="Printable JVA student registration slip">
+  <div class="slip">
+    <div class="slip-top">
+      <img class="slip-logo" src="../jamb-jva-english-set-02/logo.svg" alt="JVA logo">
+      <div><div class="slip-brand">JAMB VANGUARD<br>ACADEMY</div><div class="slip-small">JVA STUDENT REGISTRATION</div></div>
+    </div>
+    <div class="slip-title">
+      <h2>Student Registration Slip</h2>
+      <p>Registration details and profile reference</p>
+    </div>
+    <div class="slip-code"><div class="slip-code-label">STUDENT PROFILE CODE</div><div class="slip-code-value" id="slipCode"></div></div>
+    <div class="slip-section-title">Student information</div>
+    <div class="slip-field"><div class="slip-field-label">Full Name</div><div class="slip-field-value" id="slipName"></div></div>
+    <div class="slip-field"><div class="slip-field-label">Registration Date</div><div class="slip-field-value" id="slipDate"></div></div>
+    <div class="slip-section-title">Registered subject combination</div>
+    <div class="slip-subjects" id="slipSubjects"></div>
+    <div class="slip-sign"><div class="slip-line">Student's Signature</div><div class="slip-line">Authorised JVA Officer / Stamp</div></div>
+    <div class="slip-foot"><span>JAMB VANGUARD ACADEMY &nbsp; | &nbsp; REGISTRATION OFFICE</span><span id="slipFooterCode"></span></div>
+  </div>
+</section>
 <script>
 (function(){
 "use strict";
@@ -99,13 +143,23 @@ function dateToday(){const d=new Date();const y=d.getFullYear(),m=String(d.getMo
 function formatDate(iso){const y=iso.slice(0,4),m=iso.slice(5,7),d=iso.slice(8,10);return d+"/"+m+"/"+y}
 function makeDetails(rec){const d=$("latestDetails");d.replaceChildren();const parts=[["Student",rec.name],["Date",formatDate(rec.date)],["Subjects",rec.subjects.join(", ")]];for(const pair of parts){const line=document.createElement("div");const strong=document.createElement("strong");strong.textContent=pair[0]+": ";line.append(strong,document.createTextNode(pair[1]));d.appendChild(line)}}
 function showLatest(rec){latest=rec||null;$("generatedCode").textContent=rec?rec.code:"No code generated yet";$("generatedCode").classList.toggle("empty",!rec);$("copyLatest").disabled=!rec;$("printLatest").disabled=!rec;if(rec)makeDetails(rec);else $("latestDetails").textContent="Generated registrations will appear here."}
+function printSlip(rec){
+if(!rec)return;
+$("slipCode").textContent=rec.code;
+$("slipFooterCode").textContent=rec.code;
+$("slipName").textContent=rec.name;
+$("slipDate").textContent=formatDate(rec.date);
+const subjects=$("slipSubjects");subjects.replaceChildren();
+rec.subjects.forEach((subject,i)=>{const item=document.createElement("div");item.className="slip-subject";item.textContent=String(i+1).padStart(2,"0")+". "+subject;subjects.appendChild(item)});
+window.print();
+}
 function copyValue(value){if(navigator.clipboard&&navigator.clipboard.writeText)return navigator.clipboard.writeText(value).then(()=>message("Profile code copied."),()=>window.prompt("Copy the profile code:",value));window.prompt("Copy the profile code:",value);return Promise.resolve()}
 function itemButton(text,cls,handler){const b=document.createElement("button");b.type="button";b.className="mini"+(cls?" "+cls:"");b.textContent=text;b.addEventListener("click",handler);return b}
-function renderHistory(){const q=$("search").value.trim().toLowerCase(),box=$("historyItems");box.replaceChildren();$("recordCount").textContent=records.length+" saved";const matching=records.filter(x=>x.name.toLowerCase().includes(q)||x.code.toLowerCase().includes(q)||x.subjects.some(y=>y.toLowerCase().includes(q)));if(!matching.length){const el=document.createElement("div");el.className="empty-history";el.textContent=records.length?"No registrations match your search.":"No registrations saved yet.";box.appendChild(el);return}for(const rec of [...matching].reverse()){const row=document.createElement("article");row.className="entry";const info=document.createElement("div");const title=document.createElement("h3");title.textContent=rec.name;const code=document.createElement("code");code.textContent=rec.code;const meta=document.createElement("div");meta.className="meta";meta.textContent=formatDate(rec.date)+" • "+rec.subjects.join(", ");info.append(title,code,meta);const btns=document.createElement("div");btns.className="entry-buttons";btns.append(itemButton("View","",()=>{showLatest(rec);window.scrollTo({top:0,behavior:"smooth"})}),itemButton("Copy","",()=>copyValue(rec.code)),itemButton("Delete","delete",()=>{if(!confirm("Permanently delete this registration from this device? Export a backup first if you may need it."))return;const next=records.filter(x=>x.code!==rec.code);const old=records;records=next;if(!save()){records=old;return}if(latest&&latest.code===rec.code)showLatest(records[records.length-1]||null);renderHistory();message("Registration deleted from this browser.")}));row.append(info,btns);box.appendChild(row)}}
+function renderHistory(){const q=$("search").value.trim().toLowerCase(),box=$("historyItems");box.replaceChildren();$("recordCount").textContent=records.length+" saved";const matching=records.filter(x=>x.name.toLowerCase().includes(q)||x.code.toLowerCase().includes(q)||x.subjects.some(y=>y.toLowerCase().includes(q)));if(!matching.length){const el=document.createElement("div");el.className="empty-history";el.textContent=records.length?"No registrations match your search.":"No registrations saved yet.";box.appendChild(el);return}for(const rec of [...matching].reverse()){const row=document.createElement("article");row.className="entry";const info=document.createElement("div");const title=document.createElement("h3");title.textContent=rec.name;const code=document.createElement("code");code.textContent=rec.code;const meta=document.createElement("div");meta.className="meta";meta.textContent=formatDate(rec.date)+" • "+rec.subjects.join(", ");info.append(title,code,meta);const btns=document.createElement("div");btns.className="entry-buttons";btns.append(itemButton("Print","",()=>printSlip(rec)),itemButton("Copy","",()=>copyValue(rec.code)),itemButton("Delete","delete",()=>{if(!confirm("Permanently delete this registration from this device? Export a backup first if you may need it."))return;const next=records.filter(x=>x.code!==rec.code);const old=records;records=next;if(!save()){records=old;return}if(latest&&latest.code===rec.code)showLatest(records[records.length-1]||null);renderHistory();message("Registration deleted from this browser.")}));row.append(info,btns);box.appendChild(row)}}
 function exportBackup(){const data={format:"jva-profile-register-v1",exportedAt:new Date().toISOString(),records};const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});const link=document.createElement("a");link.href=URL.createObjectURL(blob);link.download="JVA-profile-backup-"+dateToday()+".json";link.click();setTimeout(()=>URL.revokeObjectURL(link.href),1500);message("Backup exported. Store the file securely.")}
 function importBackup(file){if(!file)return;if(file.size>5*1024*1024){message("Backup is too large (5 MB maximum).",true);return}const reader=new FileReader();reader.onload=()=>{try{const d=JSON.parse(String(reader.result));if(d.format!=="jva-profile-register-v1"||!Array.isArray(d.records)||d.records.some(x=>!validRecord(x)))throw Error("Not a valid JVA backup");const byCode=new Map(records.map(x=>[x.code,x]));let added=0;for(const x of d.records){if(byCode.has(x.code)){const existing=byCode.get(x.code);if(JSON.stringify(existing)!==JSON.stringify(x))throw Error("One profile code belongs to different records in the backup");continue}byCode.set(x.code,x);added++}const next=[...byCode.values()].sort((a,b)=>a.createdAt.localeCompare(b.createdAt));const prev=records;records=next;if(!save()){records=prev;return}showLatest(records[records.length-1]||null);renderHistory();message("Import complete: "+added+" new registration(s) restored.")}catch(e){message("Import failed: "+e.message,true)}finally{$("importFile").value=""}};reader.onerror=()=>message("Could not read backup file.",true);reader.readAsText(file)}
 $("form").addEventListener("submit",e=>{e.preventDefault();const name=$("studentName").value.trim().replace(/\s+/g," "),date=$("registrationDate").value,subjects=selectedSubjects();if(!name||name.length>120){message("Enter a valid student name.",true);return}if(!/^\d{4}-\d{2}-\d{2}$/.test(date)||Number.isNaN(Date.parse(date+"T00:00:00"))){message("Choose a valid registration date.",true);return}if(subjects.length<1||subjects.length>4){message("Select between one and four subjects.",true);return}const same=records.some(x=>x.name.toLowerCase()===name.toLowerCase()&&x.date===date&&x.subjects.join("|")===subjects.join("|"));if(same&&!confirm("This student has an identical saved registration. Generate another profile code anyway?"))return;let code;try{const existing=new Set(records.map(x=>x.code));for(let i=0;i<20;i++){const candidate=randomCode(date.slice(0,4));if(!existing.has(candidate)){code=candidate;break}}if(!code)throw Error("Could not generate a distinct code");}catch(err){message("Profile code generation failed: "+err.message,true);return}const rec={code,name,date,subjects,createdAt:new Date().toISOString()};records.push(rec);if(!save()){records.pop();return}showLatest(rec);renderHistory();$("studentName").value="";message("Profile code generated and saved to this browser.")});
-$("search").addEventListener("input",renderHistory);$("copyLatest").addEventListener("click",()=>latest&&copyValue(latest.code));$("printLatest").addEventListener("click",()=>latest&&window.print());$("export").addEventListener("click",exportBackup);$("import").addEventListener("click",()=>$("importFile").click());$("importFile").addEventListener("change",e=>importBackup(e.target.files[0]));
+$("search").addEventListener("input",renderHistory);$("copyLatest").addEventListener("click",()=>latest&&copyValue(latest.code));$("printLatest").addEventListener("click",()=>printSlip(latest));$("export").addEventListener("click",exportBackup);$("import").addEventListener("click",()=>$("importFile").click());$("importFile").addEventListener("change",e=>importBackup(e.target.files[0]));
 renderSubjects();$("registrationDate").value=dateToday();records=getRecords();showLatest(records[records.length-1]||null);renderHistory();
 })();
 </script>

@@ -3,70 +3,86 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#151443">
+<meta name="theme-color" content="#f6f3e9">
 <meta name="robots" content="noindex,nofollow,noarchive">
 <title>JVA | Student Profile Registration</title>
 <style>
-:root{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#f7f6ff;background:#0c1030;font-synthesis:none}
-*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 80% -12%,#373078 0%,transparent 52%),#0c1030}
+:root{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#161d21;background:#f6f3e9;font-synthesis:none}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 90% 2%,rgba(28,197,209,.18),transparent 42%),radial-gradient(ellipse at 8% 78%,rgba(22,63,67,.065),transparent 42%),#f6f3e9;color:#161d21}
 button,input,select{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.5}
-.page{width:min(960px,100%);padding:20px 15px 55px;margin:auto}
-.header{display:flex;align-items:center;gap:13px;margin:8px 0 27px}.mark{height:50px;width:50px;background:linear-gradient(145deg,#1c58cb,#6f48d5);border:1px solid #746adc;border-radius:14px;display:grid;place-items:center;font-weight:900;letter-spacing:.04em;box-shadow:0 8px 25px #0005}.eyebrow{color:#b8b5ef;letter-spacing:.09em;text-transform:uppercase;font-size:11px;font-weight:750}.header h1{margin:3px 0 0;font-size:clamp(21px,4vw,30px);line-height:1.2}
-.lead{font-size:14px;color:#c4c8e4;line-height:1.65;max-width:740px}
-.layout{display:grid;grid-template-columns:minmax(0,1.07fr) minmax(0,.93fr);gap:18px;align-items:start;margin-top:22px}
-.panel{border:1px solid #38365e;border-radius:18px;background:#1b1c49;box-shadow:0 13px 35px #03071f44;padding:22px}
-.panel h2{font-size:18px;margin:0 0 5px}.sub{font-size:12px;color:#afb3d3;line-height:1.55;margin:0 0 22px}
-label.field{display:block;color:#e3e5fb;font-size:13px;font-weight:700;margin:0 0 8px}
-.fieldset{margin-bottom:20px}input[type=text],input[type=date],input[type=search]{width:100%;height:45px;background:#0e1436;border:1px solid #56577d;color:#fff;border-radius:10px;padding:0 12px;outline-offset:3px}
-input:focus-visible,button:focus-visible{outline:2px solid #7fe5e9;outline-offset:2px}input[type=date]{color-scheme:dark}
-.hint{color:#aab1d2;font-size:12px;line-height:1.5;margin:6px 0 0}.subject-list{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.choice{background:#10173a;border:1px solid #444667;border-radius:10px;padding:11px 9px;display:flex;align-items:center;gap:8px;color:#eeeefc;font-size:12px;min-height:45px;cursor:pointer}
-.choice input{accent-color:#5fd2e0;width:16px;height:16px;flex-shrink:0}.choice:has(input:checked){border-color:#5fd2e0;background:#15334d}
-.button{background:linear-gradient(90deg,#54bfdf,#8d74f0);color:#111737;border:0;border-radius:11px;min-height:45px;padding:11px 15px;font-size:13px;font-weight:850}
-.secondary{background:#313367;border:1px solid #575a8c;color:#fff;border-radius:10px;min-height:41px;padding:9px 13px;font-size:12px;font-weight:700}
-.danger{border-color:#9d5366;color:#ffdce0;background:#482a43}
-.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.actions>*{flex:1 1 auto}
-.code-box{margin:14px 0;padding:22px 14px;text-align:center;border:1px dashed #6664a6;background:#14183f;border-radius:13px}
-.code{font-size:clamp(19px,3.4vw,25px);font-weight:850;letter-spacing:.065em;overflow-wrap:anywhere}
-.code.empty{color:#8f95b8;font-size:15px;font-weight:500}.small{color:#b4b9dc;font-size:12px;line-height:1.6}.details{display:grid;gap:8px;color:#d9dcf5;font-size:13px}.details strong{color:#fff}
-.notice{border-left:3px solid #5fcada;background:#0f223e;padding:12px 13px;border-radius:8px;font-size:12px;line-height:1.6;color:#c9deef;margin-top:16px}
-.history{margin-top:20px}.history-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.count{color:#87dfed;font-size:12px}
+.page{width:min(1000px,100%);padding:22px 16px 55px;margin:auto}
+.header{display:flex;align-items:center;gap:13px;margin:8px 0 27px}
+.mark{height:54px;width:54px;background:#141e20;color:#f9f8f1;border:1px solid #182e31;border-radius:15px;display:grid;place-items:center;font-weight:900;letter-spacing:.04em;box-shadow:4px 5px 0 #71dce2,0 10px 24px #102b2d26}
+.eyebrow{color:#19727a;letter-spacing:.09em;text-transform:uppercase;font-size:11px;font-weight:850}
+.header h1{margin:3px 0 0;font-size:clamp(21px,4vw,30px);line-height:1.2;letter-spacing:-.035em}
+.lead{font-size:14px;color:#596667;line-height:1.65;max-width:740px}
+.layout{display:grid;grid-template-columns:minmax(0,1.07fr) minmax(0,.93fr);gap:20px;align-items:start;margin-top:22px}
+.panel{border:1px solid #d1d7d1;border-radius:19px;background:#fffef8;box-shadow:0 3px 0 #d9ece7,0 15px 38px #16343a12;padding:23px}
+.panel h2{font-size:19px;margin:0 0 5px;letter-spacing:-.025em;color:#132125}
+.sub{font-size:12px;color:#657273;line-height:1.6;margin:0 0 22px}
+label.field{display:block;color:#253134;font-size:13px;font-weight:800;margin:0 0 8px}
+.fieldset{margin-bottom:20px}
+input[type=text],input[type=date],input[type=search]{width:100%;height:47px;background:#fcfbf5;border:1px solid #bcc9c6;color:#152024;border-radius:10px;padding:0 12px;outline-offset:3px}
+input::placeholder{color:#81908f}
+input:focus-visible,button:focus-visible{outline:2px solid #008d9d;outline-offset:2px}
+input[type=date]{color-scheme:light}
+.hint{color:#687777;font-size:12px;line-height:1.5;margin:7px 0 0}
+.subject-list{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.choice{background:#f5f6ef;border:1px solid #d2dcd6;border-radius:10px;padding:11px 9px;display:flex;align-items:center;gap:8px;color:#243337;font-size:12px;min-height:46px;cursor:pointer;transition:background .16s,border-color .16s,box-shadow .16s}
+.choice input{accent-color:#098b9a;width:16px;height:16px;flex-shrink:0}
+.choice:has(input:checked){border-color:#13aab6;background:#e1f8f6;box-shadow:inset 3px 0 0 #0ca8b7}
+.button{background:linear-gradient(125deg,#111b20,#19383e);color:#f7ffff;border:1px solid #102327;border-radius:11px;min-height:46px;padding:11px 15px;font-size:13px;font-weight:850;box-shadow:0 4px 0 #6de2e6,0 10px 18px #14353918}
+.button:hover:not(:disabled){filter:brightness(1.12)}
+.secondary{background:#ebf5f1;border:1px solid #add9d9;color:#162e34;border-radius:10px;min-height:42px;padding:9px 13px;font-size:12px;font-weight:800}
+.secondary:hover:not(:disabled),.mini:hover{background:#d6f4f0}
+.danger{border-color:#b16c6c;color:#761f2c;background:#fff1ed}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}.actions>*{flex:1 1 auto}
+.code-box{margin:14px 0;padding:23px 14px;text-align:center;border:1px solid #8ed9dd;background:linear-gradient(145deg,#e5f9f6,#fdfcf3);border-radius:13px;box-shadow:inset 0 0 0 3px #ffffffa8}
+.code{font-size:clamp(19px,3.4vw,25px);font-weight:900;letter-spacing:.065em;color:#102e32;overflow-wrap:anywhere}
+.code.empty{color:#6e8183;font-size:15px;font-weight:500}
+.small{color:#687576;font-size:12px;line-height:1.6}
+.details{display:grid;gap:8px;color:#394d50;font-size:13px}.details strong{color:#15292e}
+.history{margin-top:22px}.history-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.count{background:#e0f7f4;color:#087785;font-size:12px;font-weight:800;padding:6px 10px;border-radius:40px}
 .toolbar{display:grid;grid-template-columns:1fr auto auto;gap:8px;margin:16px 0}
-.entry{display:flex;align-items:start;justify-content:space-between;gap:12px;background:#11163c;border:1px solid #3d416c;border-radius:11px;padding:14px;margin-top:9px}
-.entry h3{font-size:14px;margin:0 0 5px}.entry .meta{font-size:12px;color:#b3b8da;line-height:1.6}.entry code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:13px;color:#8be6ef;font-weight:800;letter-spacing:.04em}.entry-buttons{display:flex;gap:6px;flex-wrap:wrap;justify-content:end;margin-top:8px}
-.mini{background:#282a5b;border:1px solid #515688;border-radius:7px;color:#ecedff;padding:7px 9px;font-size:11px}.mini.delete{border-color:#9d5366;color:#ffc0c9}
-.empty-history{border:1px dashed #464d75;border-radius:12px;text-align:center;padding:25px 10px;color:#bac0df;font-size:13px}
-.status{font-size:12px;color:#bcead9;min-height:18px;margin:12px 0 0}.status.error{color:#ffc6c8}
-.foot{color:#989fc2;font-size:11px;line-height:1.7;margin-top:20px}
-@media(max-width:740px){.layout{grid-template-columns:1fr}.page{padding:15px 12px 35px}.panel{padding:17px}.toolbar{grid-template-columns:1fr 1fr}.toolbar input{grid-column:1/-1}.header{margin-top:5px}.entry{flex-direction:column}.entry-buttons{justify-content:start}}
+.entry{display:flex;align-items:start;justify-content:space-between;gap:12px;background:#fbfaf5;border:1px solid #d5e0d9;border-radius:11px;padding:14px;margin-top:9px}
+.entry h3{font-size:14px;margin:0 0 5px;color:#13252a}
+.entry .meta{font-size:12px;color:#6b7676;line-height:1.6}
+.entry code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:13px;color:#087d8b;font-weight:850;letter-spacing:.04em}
+.entry-buttons{display:flex;gap:6px;flex-wrap:wrap;justify-content:end;margin-top:8px}
+.mini{background:#e8f6f3;border:1px solid #b9dcd9;border-radius:7px;color:#193940;padding:8px 10px;font-size:11px;font-weight:750}
+.mini.delete{border-color:#e2bdb9;color:#812d3c;background:#fff2ee}
+.empty-history{border:1px dashed #c4d3cf;border-radius:12px;text-align:center;padding:25px 10px;color:#758281;font-size:13px}
+.status{font-size:12px;color:#117b59;min-height:18px;margin:12px 0 0}.status.error{color:#b22d46}
+@media(max-width:740px){.layout{grid-template-columns:1fr}.page{padding:15px 12px 35px}.panel{padding:18px}.toolbar{grid-template-columns:1fr 1fr}.toolbar input{grid-column:1/-1}.header{margin-top:5px}.entry{flex-direction:column}.entry-buttons{justify-content:start}}
 @media(max-width:340px){.subject-list{grid-template-columns:1fr}}
-/* The registration slip is a separate, A4 print-only document. */
+/* Separate A4 student registration slip */
 #printSheet{display:none}
 @page{size:A4;margin:14mm}
 @media print{
-html,body{background:#fff!important;color:#141a2e!important;margin:0;padding:0}
+html,body{background:#fff!important;color:#142326!important;margin:0;padding:0}
 .page{display:none!important}
-#printSheet{display:block!important;width:100%;background:#fff;color:#17213c;font-family:Arial,Helvetica,sans-serif;print-color-adjust:exact;-webkit-print-color-adjust:exact}
-.slip{border:2px solid #17254a;border-radius:8px;padding:22px 26px;position:relative;min-height:238mm}
-.slip-top{display:flex;align-items:center;gap:16px;border-bottom:3px solid #17254a;padding-bottom:17px}
-.slip-logo{height:78px;width:78px;object-fit:contain}
-.slip-brand{font-size:23px;letter-spacing:.6px;font-weight:800;line-height:1.15}
-.slip-small{font-size:10px;letter-spacing:2px;font-weight:700;color:#465578;margin-top:5px}
-.slip-title{text-align:center;margin:25px 0 18px}
-.slip-title h2{font-size:20px;margin:0 0 7px;text-transform:uppercase;letter-spacing:1px}
-.slip-title p{margin:0;color:#52617b;font-size:12px}
-.slip-code{border:1.5px solid #314776;border-radius:5px;text-align:center;padding:13px 12px;margin-bottom:25px}
-.slip-code-label{font-size:10px;letter-spacing:1.4px;color:#53607a;font-weight:700}
-.slip-code-value{font-size:23px;font-weight:800;letter-spacing:1.3px;margin-top:7px;overflow-wrap:anywhere}
-.slip-section-title{font-weight:800;color:#17254a;font-size:12px;text-transform:uppercase;letter-spacing:.7px;border-bottom:1px solid #b5c0d4;padding-bottom:8px;margin:20px 0 10px}
-.slip-field{display:grid;grid-template-columns:145px 1fr;padding:12px 0;border-bottom:1px solid #e2e6ef;gap:10px;font-size:13px}
-.slip-field-label{font-weight:700;color:#53617b}
-.slip-field-value{font-weight:700;overflow-wrap:anywhere}
-.slip-subjects{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:13px}
-.slip-subject{font-size:12px;border:1px solid #d2d9e6;border-radius:4px;padding:12px 10px;min-height:40px}
-.slip-sign{display:grid;grid-template-columns:1fr 1fr;gap:35px;margin-top:65px}
-.slip-line{border-top:1px solid #596680;padding-top:9px;font-size:11px;text-align:center;color:#45516e}
-.slip-foot{position:absolute;bottom:25px;left:26px;right:26px;border-top:1px solid #c2c9d7;padding-top:10px;display:flex;justify-content:space-between;font-size:10px;color:#52607a;gap:10px}
+#printSheet{display:block!important;width:100%;background:#fffdf6;color:#142326;font-family:Arial,Helvetica,sans-serif;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+.slip{border:1.7px solid #17282b;border-radius:8px;padding:23px 27px;position:relative;min-height:238mm;background:#fffdf6;box-shadow:inset 0 0 0 5px #e7f9f5}
+.slip:before{content:"";position:absolute;left:0;right:0;top:0;height:8px;background:#19aeba;border-radius:6px 6px 0 0}
+.slip-top{display:flex;align-items:center;gap:16px;border-bottom:2px solid #14292d;padding:8px 0 18px}
+.slip-logo{height:74px;width:74px;object-fit:contain}
+.slip-brand{font-size:24px;letter-spacing:.4px;font-weight:850;line-height:1.15;color:#101e21}
+.slip-small{font-size:10px;letter-spacing:2px;font-weight:800;color:#157e89;margin-top:5px}
+.slip-title{text-align:center;margin:26px 0 18px}
+.slip-title h2{font-size:20px;margin:0 0 7px;text-transform:uppercase;letter-spacing:1px;color:#12282d}
+.slip-title p{margin:0;color:#637173;font-size:12px}
+.slip-code{border:1.5px solid #20aabb;border-radius:6px;text-align:center;padding:17px 12px;margin-bottom:25px;background:#eafaf7}
+.slip-code-label{font-size:10px;letter-spacing:1.4px;color:#23747d;font-weight:800}
+.slip-code-value{font-size:23px;color:#122e33;font-weight:900;letter-spacing:1.3px;margin-top:7px;overflow-wrap:anywhere}
+.slip-section-title{font-weight:850;color:#102c32;font-size:12px;text-transform:uppercase;letter-spacing:.7px;border-bottom:1px solid #92b7b8;padding-bottom:8px;margin:22px 0 10px}
+.slip-field{display:grid;grid-template-columns:145px 1fr;padding:13px 0;border-bottom:1px solid #dce6df;gap:10px;font-size:13px}
+.slip-field-label{font-weight:700;color:#597073}
+.slip-field-value{font-weight:750;color:#182c2e;overflow-wrap:anywhere}
+.slip-subjects{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:15px}
+.slip-subject{font-size:12px;border:1px solid #bbd8d4;border-radius:5px;padding:13px 11px;min-height:44px;background:#f1f8f4;color:#132b2c}
+.slip-foot{position:absolute;bottom:25px;left:27px;right:27px;border-top:1px solid #a7c7c4;padding-top:10px;display:flex;justify-content:space-between;font-size:10px;color:#41666b;gap:10px}
 }
 </style>
 </head>
@@ -121,7 +137,6 @@ html,body{background:#fff!important;color:#141a2e!important;margin:0;padding:0}
     <div class="slip-field"><div class="slip-field-label">Registration Date</div><div class="slip-field-value" id="slipDate"></div></div>
     <div class="slip-section-title">Registered subject combination</div>
     <div class="slip-subjects" id="slipSubjects"></div>
-    <div class="slip-sign"><div class="slip-line">Student's Signature</div><div class="slip-line">Authorised JVA Officer / Stamp</div></div>
     <div class="slip-foot"><span>JAMB VANGUARD ACADEMY &nbsp; | &nbsp; REGISTRATION OFFICE</span><span id="slipFooterCode"></span></div>
   </div>
 </section>

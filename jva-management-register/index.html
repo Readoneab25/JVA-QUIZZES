@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#151443">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>JVA | Student Profile Registration</title>
+<style>
+:root{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#f7f6ff;background:#0c1030;font-synthesis:none}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 80% -12%,#373078 0%,transparent 52%),#0c1030}
+button,input,select{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.5}
+.page{width:min(960px,100%);padding:20px 15px 55px;margin:auto}
+.header{display:flex;align-items:center;gap:13px;margin:8px 0 27px}.mark{height:50px;width:50px;background:linear-gradient(145deg,#1c58cb,#6f48d5);border:1px solid #746adc;border-radius:14px;display:grid;place-items:center;font-weight:900;letter-spacing:.04em;box-shadow:0 8px 25px #0005}.eyebrow{color:#b8b5ef;letter-spacing:.09em;text-transform:uppercase;font-size:11px;font-weight:750}.header h1{margin:3px 0 0;font-size:clamp(21px,4vw,30px);line-height:1.2}
+.lead{font-size:14px;color:#c4c8e4;line-height:1.65;max-width:740px}
+.layout{display:grid;grid-template-columns:minmax(0,1.07fr) minmax(0,.93fr);gap:18px;align-items:start;margin-top:22px}
+.panel{border:1px solid #38365e;border-radius:18px;background:#1b1c49;box-shadow:0 13px 35px #03071f44;padding:22px}
+.panel h2{font-size:18px;margin:0 0 5px}.sub{font-size:12px;color:#afb3d3;line-height:1.55;margin:0 0 22px}
+label.field{display:block;color:#e3e5fb;font-size:13px;font-weight:700;margin:0 0 8px}
+.fieldset{margin-bottom:20px}input[type=text],input[type=date],input[type=search]{width:100%;height:45px;background:#0e1436;border:1px solid #56577d;color:#fff;border-radius:10px;padding:0 12px;outline-offset:3px}
+input:focus-visible,button:focus-visible{outline:2px solid #7fe5e9;outline-offset:2px}input[type=date]{color-scheme:dark}
+.hint{color:#aab1d2;font-size:12px;line-height:1.5;margin:6px 0 0}.subject-list{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.choice{background:#10173a;border:1px solid #444667;border-radius:10px;padding:11px 9px;display:flex;align-items:center;gap:8px;color:#eeeefc;font-size:12px;min-height:45px;cursor:pointer}
+.choice input{accent-color:#5fd2e0;width:16px;height:16px;flex-shrink:0}.choice:has(input:checked){border-color:#5fd2e0;background:#15334d}
+.button{background:linear-gradient(90deg,#54bfdf,#8d74f0);color:#111737;border:0;border-radius:11px;min-height:45px;padding:11px 15px;font-size:13px;font-weight:850}
+.secondary{background:#313367;border:1px solid #575a8c;color:#fff;border-radius:10px;min-height:41px;padding:9px 13px;font-size:12px;font-weight:700}
+.danger{border-color:#9d5366;color:#ffdce0;background:#482a43}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.actions>*{flex:1 1 auto}
+.code-box{margin:14px 0;padding:22px 14px;text-align:center;border:1px dashed #6664a6;background:#14183f;border-radius:13px}
+.code{font-size:clamp(19px,3.4vw,25px);font-weight:850;letter-spacing:.065em;overflow-wrap:anywhere}
+.code.empty{color:#8f95b8;font-size:15px;font-weight:500}.small{color:#b4b9dc;font-size:12px;line-height:1.6}.details{display:grid;gap:8px;color:#d9dcf5;font-size:13px}.details strong{color:#fff}
+.notice{border-left:3px solid #5fcada;background:#0f223e;padding:12px 13px;border-radius:8px;font-size:12px;line-height:1.6;color:#c9deef;margin-top:16px}
+.history{margin-top:20px}.history-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.count{color:#87dfed;font-size:12px}
+.toolbar{display:grid;grid-template-columns:1fr auto auto;gap:8px;margin:16px 0}
+.entry{display:flex;align-items:start;justify-content:space-between;gap:12px;background:#11163c;border:1px solid #3d416c;border-radius:11px;padding:14px;margin-top:9px}
+.entry h3{font-size:14px;margin:0 0 5px}.entry .meta{font-size:12px;color:#b3b8da;line-height:1.6}.entry code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:13px;color:#8be6ef;font-weight:800;letter-spacing:.04em}.entry-buttons{display:flex;gap:6px;flex-wrap:wrap;justify-content:end;margin-top:8px}
+.mini{background:#282a5b;border:1px solid #515688;border-radius:7px;color:#ecedff;padding:7px 9px;font-size:11px}.mini.delete{border-color:#9d5366;color:#ffc0c9}
+.empty-history{border:1px dashed #464d75;border-radius:12px;text-align:center;padding:25px 10px;color:#bac0df;font-size:13px}
+.status{font-size:12px;color:#bcead9;min-height:18px;margin:12px 0 0}.status.error{color:#ffc6c8}
+.foot{color:#989fc2;font-size:11px;line-height:1.7;margin-top:20px}
+@media(max-width:740px){.layout{grid-template-columns:1fr}.page{padding:15px 12px 35px}.panel{padding:17px}.toolbar{grid-template-columns:1fr 1fr}.toolbar input{grid-column:1/-1}.header{margin-top:5px}.entry{flex-direction:column}.entry-buttons{justify-content:start}}
+@media(max-width:340px){.subject-list{grid-template-columns:1fr}}
+@media print{body{background:#fff;color:#111}.page,.panel{padding:0;box-shadow:none;border:0}.header,.lead,.layout>.panel:first-child,.history,.notice,.actions,.foot,#status{display:none!important}.layout{display:block;margin:0}.layout>.panel:last-child{display:block}.code-box{border:1px solid #222;background:#fff;color:#111}.code,.details,.details strong,.small{color:#111}#lastTitle{font-size:22px}}
+</style>
+</head>
+<body>
+<main class="page">
+<header class="header"><div class="mark" aria-hidden="true">JVA</div><div><div class="eyebrow">JAMB Vanguard Academy</div><h1>Student Profile Registration</h1></div></header>
+<p class="lead">Management registration desk. Enter a student's details, select a registration date and subject combination, then generate a JVA profile code. All history is saved only in this browser on this device.</p>
+<div class="layout">
+<section class="panel" aria-labelledby="registerTitle">
+<h2 id="registerTitle">New registration</h2>
+<p class="sub">Student details and subjects are required. Profile codes are created randomly and checked against the history on this device.</p>
+<form id="form">
+<div class="fieldset"><label for="studentName" class="field">Student's full name</label><input id="studentName" type="text" required maxlength="120" autocomplete="off" placeholder="e.g. Amina Ibrahim"></div>
+<div class="fieldset"><label for="registrationDate" class="field">Registration date</label><input id="registrationDate" type="date" required></div>
+<div class="fieldset">
+<label class="field">Subject combination</label>
+<div class="subject-list" id="subjectList"></div>
+<p class="hint" id="subjectHint">Select up to four subjects (Use of English is preselected). Subject choices can be adjusted before generating the code.</p>
+</div>
+<button class="button" type="submit" style="width:100%">Generate Profile Code</button>
+</form>
+<p class="status" id="status" role="status" aria-live="polite"></p>
+</section>
+<section class="panel" aria-labelledby="lastTitle">
+<h2 id="lastTitle">Latest registration</h2>
+<p class="sub">Copy the code or print a student's registration slip.</p>
+<div class="code-box"><div class="eyebrow" id="codeLabel">PROFILE CODE</div><div class="code empty" id="generatedCode">No code generated yet</div></div>
+<div class="details" id="latestDetails"><span>Generated registrations will appear here.</span></div>
+<div class="actions"><button type="button" id="copyLatest" class="secondary" disabled>Copy Code</button><button type="button" id="printLatest" class="secondary" disabled>Print Slip</button></div>
+<div class="notice"><strong>Important:</strong> A profile code is an internal JVA registration reference, not a JAMB-issued PIN or admission number. A code alone is not proof of identity.</div>
+</section>
+</div>
+<section class="panel history" aria-labelledby="historyTitle">
+<div class="history-head"><h2 id="historyTitle">Registration history</h2><span id="recordCount" class="count">0 saved</span></div>
+<p class="sub">Saved in this browser only. Back up the records before switching phones, clearing browser data, or reinstalling the browser.</p>
+<div class="toolbar"><input id="search" type="search" placeholder="Search student name or profile code" aria-label="Search registrations"><button type="button" class="secondary" id="export">Export Backup</button><button type="button" class="secondary" id="import">Import Backup</button></div>
+<input id="importFile" type="file" accept=".json,application/json" hidden>
+<div id="historyItems"></div>
+</section>
+<p class="foot">Private-use link, not password-protected. Anyone using this browser profile can view locally stored records. GitHub Pages hosts only the website files; no student details are uploaded by this application. Backups contain students' names and subject combinations—store them securely.</p>
+</main>
+<script>
+(function(){
+"use strict";
+const KEY="jva_profile_register_v1";
+const SUBJECTS=["Use of English","Mathematics","Physics","Chemistry","Biology","Economics","Government","Literature in English","Geography","Commerce","Christian Religious Studies","Islamic Religious Studies","Agricultural Science","Accounting"];
+const $=id=>document.getElementById(id);
+let records=[],latest=null;
+function message(text,error){const s=$("status");s.textContent=text||"";s.classList.toggle("error",!!error)}
+function getRecords(){try{const raw=localStorage.getItem(KEY);if(!raw)return [];const parsed=JSON.parse(raw);if(!Array.isArray(parsed))throw Error("Invalid saved history");return parsed.filter(validRecord)}catch(e){message("Saved history could not be read. Do not generate new records before recovering a backup.",true);$("form").querySelector("button[type=submit]").disabled=true;return []}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(records));return true}catch(e){message("Could not save locally. Check browser storage settings. No code was issued.",true);return false}}
+function validRecord(x){return x&&typeof x==="object"&&typeof x.code==="string"&&/^JVA-\d{2}-[A-F0-9]{10}$/.test(x.code)&&typeof x.name==="string"&&x.name.length>0&&x.name.length<=120&&typeof x.date==="string"&&/^\d{4}-\d{2}-\d{2}$/.test(x.date)&&Array.isArray(x.subjects)&&x.subjects.length>=1&&x.subjects.length<=4&&x.subjects.every(s=>SUBJECTS.includes(s))&&typeof x.createdAt==="string"&&!Number.isNaN(Date.parse(x.createdAt))}
+function randomCode(year){if(!globalThis.crypto||!crypto.getRandomValues)throw Error("Secure random generation is unavailable here");const bytes=new Uint8Array(5);crypto.getRandomValues(bytes);return "JVA-"+year.slice(-2)+"-"+Array.from(bytes,x=>x.toString(16).padStart(2,"0")).join("").toUpperCase()}
+function renderSubjects(){for(const subject of SUBJECTS){const label=document.createElement("label");label.className="choice";const input=document.createElement("input");input.type="checkbox";input.value=subject;input.checked=subject==="Use of English";input.name="subjects";const span=document.createElement("span");span.textContent=subject;label.append(input,span);$("subjectList").appendChild(label)}$("subjectList").addEventListener("change",e=>{const selected=[...document.querySelectorAll('input[name="subjects"]:checked')];if(selected.length>4){e.target.checked=false;message("Choose no more than four subjects.",true)}else message("")})}
+function selectedSubjects(){return [...document.querySelectorAll('input[name="subjects"]:checked')].map(x=>x.value)}
+function dateToday(){const d=new Date();const y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,"0"),day=String(d.getDate()).padStart(2,"0");return y+"-"+m+"-"+day}
+function formatDate(iso){const y=iso.slice(0,4),m=iso.slice(5,7),d=iso.slice(8,10);return d+"/"+m+"/"+y}
+function makeDetails(rec){const d=$("latestDetails");d.replaceChildren();const parts=[["Student",rec.name],["Date",formatDate(rec.date)],["Subjects",rec.subjects.join(", ")]];for(const pair of parts){const line=document.createElement("div");const strong=document.createElement("strong");strong.textContent=pair[0]+": ";line.append(strong,document.createTextNode(pair[1]));d.appendChild(line)}}
+function showLatest(rec){latest=rec||null;$("generatedCode").textContent=rec?rec.code:"No code generated yet";$("generatedCode").classList.toggle("empty",!rec);$("copyLatest").disabled=!rec;$("printLatest").disabled=!rec;if(rec)makeDetails(rec);else $("latestDetails").textContent="Generated registrations will appear here."}
+function copyValue(value){if(navigator.clipboard&&navigator.clipboard.writeText)return navigator.clipboard.writeText(value).then(()=>message("Profile code copied."),()=>window.prompt("Copy the profile code:",value));window.prompt("Copy the profile code:",value);return Promise.resolve()}
+function itemButton(text,cls,handler){const b=document.createElement("button");b.type="button";b.className="mini"+(cls?" "+cls:"");b.textContent=text;b.addEventListener("click",handler);return b}
+function renderHistory(){const q=$("search").value.trim().toLowerCase(),box=$("historyItems");box.replaceChildren();$("recordCount").textContent=records.length+" saved";const matching=records.filter(x=>x.name.toLowerCase().includes(q)||x.code.toLowerCase().includes(q)||x.subjects.some(y=>y.toLowerCase().includes(q)));if(!matching.length){const el=document.createElement("div");el.className="empty-history";el.textContent=records.length?"No registrations match your search.":"No registrations saved yet.";box.appendChild(el);return}for(const rec of [...matching].reverse()){const row=document.createElement("article");row.className="entry";const info=document.createElement("div");const title=document.createElement("h3");title.textContent=rec.name;const code=document.createElement("code");code.textContent=rec.code;const meta=document.createElement("div");meta.className="meta";meta.textContent=formatDate(rec.date)+" • "+rec.subjects.join(", ");info.append(title,code,meta);const btns=document.createElement("div");btns.className="entry-buttons";btns.append(itemButton("View","",()=>{showLatest(rec);window.scrollTo({top:0,behavior:"smooth"})}),itemButton("Copy","",()=>copyValue(rec.code)),itemButton("Delete","delete",()=>{if(!confirm("Permanently delete this registration from this device? Export a backup first if you may need it."))return;const next=records.filter(x=>x.code!==rec.code);const old=records;records=next;if(!save()){records=old;return}if(latest&&latest.code===rec.code)showLatest(records[records.length-1]||null);renderHistory();message("Registration deleted from this browser.")}));row.append(info,btns);box.appendChild(row)}}
+function exportBackup(){const data={format:"jva-profile-register-v1",exportedAt:new Date().toISOString(),records};const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});const link=document.createElement("a");link.href=URL.createObjectURL(blob);link.download="JVA-profile-backup-"+dateToday()+".json";link.click();setTimeout(()=>URL.revokeObjectURL(link.href),1500);message("Backup exported. Store the file securely.")}
+function importBackup(file){if(!file)return;if(file.size>5*1024*1024){message("Backup is too large (5 MB maximum).",true);return}const reader=new FileReader();reader.onload=()=>{try{const d=JSON.parse(String(reader.result));if(d.format!=="jva-profile-register-v1"||!Array.isArray(d.records)||d.records.some(x=>!validRecord(x)))throw Error("Not a valid JVA backup");const byCode=new Map(records.map(x=>[x.code,x]));let added=0;for(const x of d.records){if(byCode.has(x.code)){const existing=byCode.get(x.code);if(JSON.stringify(existing)!==JSON.stringify(x))throw Error("One profile code belongs to different records in the backup");continue}byCode.set(x.code,x);added++}const next=[...byCode.values()].sort((a,b)=>a.createdAt.localeCompare(b.createdAt));const prev=records;records=next;if(!save()){records=prev;return}showLatest(records[records.length-1]||null);renderHistory();message("Import complete: "+added+" new registration(s) restored.")}catch(e){message("Import failed: "+e.message,true)}finally{$("importFile").value=""}};reader.onerror=()=>message("Could not read backup file.",true);reader.readAsText(file)}
+$("form").addEventListener("submit",e=>{e.preventDefault();const name=$("studentName").value.trim().replace(/\s+/g," "),date=$("registrationDate").value,subjects=selectedSubjects();if(!name||name.length>120){message("Enter a valid student name.",true);return}if(!/^\d{4}-\d{2}-\d{2}$/.test(date)||Number.isNaN(Date.parse(date+"T00:00:00"))){message("Choose a valid registration date.",true);return}if(subjects.length<1||subjects.length>4){message("Select between one and four subjects.",true);return}const same=records.some(x=>x.name.toLowerCase()===name.toLowerCase()&&x.date===date&&x.subjects.join("|")===subjects.join("|"));if(same&&!confirm("This student has an identical saved registration. Generate another profile code anyway?"))return;let code;try{const existing=new Set(records.map(x=>x.code));for(let i=0;i<20;i++){const candidate=randomCode(date.slice(0,4));if(!existing.has(candidate)){code=candidate;break}}if(!code)throw Error("Could not generate a distinct code");}catch(err){message("Profile code generation failed: "+err.message,true);return}const rec={code,name,date,subjects,createdAt:new Date().toISOString()};records.push(rec);if(!save()){records.pop();return}showLatest(rec);renderHistory();$("studentName").value="";message("Profile code generated and saved to this browser.")});
+$("search").addEventListener("input",renderHistory);$("copyLatest").addEventListener("click",()=>latest&&copyValue(latest.code));$("printLatest").addEventListener("click",()=>latest&&window.print());$("export").addEventListener("click",exportBackup);$("import").addEventListener("click",()=>$("importFile").click());$("importFile").addEventListener("change",e=>importBackup(e.target.files[0]));
+renderSubjects();$("registrationDate").value=dateToday();records=getRecords();showLatest(records[records.length-1]||null);renderHistory();
+})();
+</script>
+</body>
+</html>

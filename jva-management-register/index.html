@@ -155,7 +155,7 @@ html,body{background:#fff!important;color:#142326!important;margin:0;padding:0}
 <body>
 <main class="page">
 <header class="header"><div class="mark"><img src="jva-logo.svg" alt="JVA logo" class="header-logo"></div><div><div class="eyebrow">JAMB Vanguard Academy</div><h1>Student Profile Registration</h1></div></header>
-<p class="sub" id="offlineInfo">Offline access is prepared automatically on your first online visit. Once saved, this page can be reopened without mobile data.</p>
+<p class="sub" id="offlineInfo">Offline access is being prepared.</p>
 <div class="layout">
 <section class="panel" aria-labelledby="registerTitle">
 <h2 id="registerTitle">New registration</h2>
@@ -253,7 +253,7 @@ if ("serviceWorker" in navigator && window.isSecureContext) {
       .then(registration => {
         const ready = () => {
           const label = document.getElementById("offlineInfo");
-          if (label) label.textContent = "Offline access is ready on this device. You can reopen this page without mobile data.";
+          if (label) label.textContent = "Offline access is ready.";
         };
         if (navigator.serviceWorker.controller || registration.active) ready();
         else navigator.serviceWorker.ready.then(ready).catch(() => {});

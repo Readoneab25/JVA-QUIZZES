@@ -24,7 +24,7 @@ const JVA_STANDARD_SPECIALIST_QUESTIONS = [
   },
   {
     "subject": "Biology",
-    "q": "In the traditional classification that places green algae among plants, Spirogyra, Lygodium and Zea mays all belong to kingdom",
+    "q": "Spirogyra, Lygodium and Zea mays all belong to kingdom",
     "c": [
       "Fungi",
       "Protista",

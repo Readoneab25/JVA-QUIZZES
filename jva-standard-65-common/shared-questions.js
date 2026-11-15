@@ -167,7 +167,7 @@ const JVA_STANDARD_SHARED_QUESTIONS = [
   },
   {
     "subject": "English",
-    "q": "I have a car, ___? (Use do-support in the question tag.)",
+    "q": "I have a car, ___?",
     "c": [
       "haven't I",
       "don't I",
@@ -178,7 +178,7 @@ const JVA_STANDARD_SHARED_QUESTIONS = [
   },
   {
     "subject": "English",
-    "q": "He has a mansion, ___? (Use do-support in the question tag.)",
+    "q": "He has a mansion, ___?",
     "c": [
       "hasn't he",
       "doesn't he",
@@ -189,7 +189,7 @@ const JVA_STANDARD_SHARED_QUESTIONS = [
   },
   {
     "subject": "English",
-    "q": "My school has an auditorium, ___? (Use do-support in the question tag.)",
+    "q": "My school has an auditorium, ___?",
     "c": [
       "hasn't it",
       "doesn't it",
@@ -200,7 +200,7 @@ const JVA_STANDARD_SHARED_QUESTIONS = [
   },
   {
     "subject": "English",
-    "q": "The villagers had a big hall, ___? (Use do-support in the question tag.)",
+    "q": "The villagers had a big hall, ___?",
     "c": [
       "hadn't they",
       "didn't they",
@@ -387,7 +387,7 @@ const JVA_STANDARD_SHARED_QUESTIONS = [
   },
   {
     "subject": "Chemistry",
-    "q": "Who is regarded as the father of modern atomic theory?",
+    "q": "Who is regarded as the father of the atom?",
     "c": [
       "Democritus",
       "J.J. Thomson",
@@ -519,7 +519,7 @@ const JVA_STANDARD_SHARED_QUESTIONS = [
   },
   {
     "subject": "Chemistry",
-    "q": "Who experimentally identified the hydrogen nucleus as a positively charged particle later named the proton?",
+    "q": "According to JAMB, the discovery of the proton is credited to",
     "c": [
       "Eugene Goldstein",
       "Ernest Rutherford",

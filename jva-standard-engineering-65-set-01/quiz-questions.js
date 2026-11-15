@@ -145,7 +145,7 @@ const JVA_STANDARD_SPECIALIST_QUESTIONS = [
   },
   {
     "subject": "Mathematics",
-    "q": "In the BODMAS convention where 'O' represents 'of' (multiplication), the letter 'O' stands for",
+    "q": "In BODMAS, the letter "O" stands for",
     "c": [
       "Order",
       "Operation",

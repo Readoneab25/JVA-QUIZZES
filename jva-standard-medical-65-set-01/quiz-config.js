@@ -1,9 +1,9 @@
 const QUIZ_CONFIG = {
   "id": "jva-standard-medical-65-set-01",
   "mode": "tutor-review",
-  "title": "JVA Medical Standard — Set 01",
+  "title": "JVA Medical Standard — Set 02",
   "subject": "English, Physics, Chemistry and Biology",
-  "quizNumber": "Standard Set 01",
+  "quizNumber": "Standard Set 02",
   "tutorName": "JAMB Vanguard Academy",
   "logo": "logo.svg",
   "timeMinutes": 40,

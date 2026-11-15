@@ -1,9 +1,9 @@
 const QUIZ_CONFIG = {
   "id": "jva-standard-engineering-65-set-01",
   "mode": "tutor-review",
-  "title": "JVA Engineering Standard — Set 01",
+  "title": "JVA Engineering Standard — Set 02",
   "subject": "English, Physics, Chemistry and Mathematics",
-  "quizNumber": "Standard Set 01",
+  "quizNumber": "Standard Set 02",
   "tutorName": "JAMB Vanguard Academy",
   "logo": "logo.svg",
   "timeMinutes": 40,

@@ -1,0 +1,27 @@
+name: JVA standard 65-question validation
+on:
+  pull_request:
+    paths:
+      - 'jva-standard-65-common/**'
+      - 'jva-standard-engineering-65-set-01/**'
+      - 'jva-standard-medical-65-set-01/**'
+      - 'tests/jva-standard-65.test.cjs'
+      - '.github/workflows/jva-standard-65-validation.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'jva-standard-65-common/**'
+      - 'jva-standard-engineering-65-set-01/**'
+      - 'jva-standard-medical-65-set-01/**'
+      - 'tests/jva-standard-65.test.cjs'
+      - '.github/workflows/jva-standard-65-validation.yml'
+permissions:
+  contents: read
+jobs:
+  validate-quiz-structure:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check question counts, key and private results
+        run: node tests/jva-standard-65.test.cjs

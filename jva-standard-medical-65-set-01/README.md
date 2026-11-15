@@ -1,4 +1,4 @@
-# JVA Medical Standard — Set 01
+# JVA Medical Standard — Set 02
 
 - **Questions:** 65 (English 20, Physics 15, Chemistry 15, Biology 15)
 - **Duration:** 40 minutes

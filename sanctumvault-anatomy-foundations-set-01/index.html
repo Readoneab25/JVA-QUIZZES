@@ -12,7 +12,7 @@ header{padding:16px;display:flex;justify-content:space-between;align-items:cente
 </style></head>
 <body><div class="wrap">
 <header><div class="brand"><img class="brand-logo" src="logo.svg" alt="SanctumVault"><div><h1 class="h1" id="title"></h1><div class="meta" id="meta"></div><div class="meta">SanctumVault</div></div></div><div class="timer-box"><span class="timer-label">TIME LEFT</span><span class="timer" id="timer">05:00</span></div></header>
-<div class="card" id="intro"><span class="eyebrow">Online assessment</span><h2 class="card-title">Ready to begin?</h2><p class="meta">Enter your details. Your result is recorded through the central SanctumVault results system.</p><label class="field-label">Student name</label><input class="text-input" id="name" placeholder="Enter your full name"><label class="field-label">Institution</label><input class="text-input" id="institution" placeholder="Enter your institution"><div class="start-row"><button class="white-button" id="start">Start Quiz</button></div></div>
+<div class="card" id="intro"><span class="eyebrow">Online assessment</span><h2 class="card-title">Ready to begin?</h2><p class="meta">No login required. Enter your name and institution. Your result is saved to SanctumVault.</p><label class="field-label">Student name</label><input class="text-input" id="name" placeholder="Enter your full name"><label class="field-label">Institution</label><input class="text-input" id="institution" placeholder="Enter your institution"><div class="start-row"><button class="white-button" id="start">Start Quiz</button></div></div>
 <div class="card" id="quiz" style="display:none"><div class="progress-row"><span>Question <span id="num">1</span> of <span id="total"></span></span><span><span id="pct">0</span>% complete</span></div><div class="progress"><i id="bar"></i></div><div id="area"></div><div class="controls"><div><button class="secondary" id="prev">Previous</button> <button id="next">Next</button></div><button class="secondary" id="submit">Submit Quiz</button></div><p class="footer">You can move between questions and review your answers after submission. The quiz submits automatically when time expires.</p></div>
 <div class="card" id="result" style="display:none"><div class="result"><h2 id="score"></h2><div class="meta" id="summary"></div></div><div class="review" id="review"></div><div class="actions"><button id="retry">Retake Quiz</button><button class="secondary" id="export">Export Results</button></div></div>
 <div class="page-actions"><button class="white-button" id="share">Share Quiz</button><div class="designer">Designed by Sanctum</div>
@@ -24,40 +24,32 @@ const sb=window.supabase.createClient("https://mgmckntsfukikkmwdsee.supabase.co"
 let state={idx:0,answers:Array(total).fill(null),studentName:"",institution:""},seconds=cfg.timeMinutes*60,timer=null,submitted=false,lastReview=[];
 function render(){const q=QUESTIONS[state.idx],area=document.getElementById("area");document.getElementById("num").textContent=state.idx+1;let p=Math.round((state.idx+1)/total*100);document.getElementById("pct").textContent=p;document.getElementById("bar").style.width=p+"%";area.innerHTML="";const qe=document.createElement("div");const qtext=document.createElement('div');qtext.className='question';qtext.textContent=(state.idx+1)+'. '+q.q;qe.appendChild(qtext);const cs=document.createElement("div");cs.className="choices";q.c.forEach((x,i)=>{const b=document.createElement("div");b.className="choice"+(state.answers[state.idx]===i?" selected":"");b.textContent=String.fromCharCode(65+i)+". "+x;b.onclick=()=>{state.answers[state.idx]=i;render()};cs.appendChild(b)});qe.appendChild(cs);area.appendChild(qe)}
 function finish(){if(submitted)return;submitted=true;clearInterval(timer);let score=0;lastReview=QUESTIONS.map((q,i)=>{let ok=state.answers[i]===q.a;if(ok)score++;return {i,q:q.q,c:q.c,user:state.answers[i],a:q.a,ok,subject:q.subject}});if(cfg.mode==="practice"){showResult(score);return}submitResult(score)}
-async function submitResult(score){const answers=lastReview.map(x=>({questionNumber:x.i+1,subject:x.subject,question:x.q,selectedIndex:x.user,correctIndex:x.a,selectedAnswer:x.user===null?"No answer":x.c[x.user],correctAnswer:x.c[x.a],result:x.ok?"Correct":"Incorrect"}));const pct=Math.round(score/total*100);const {data,error}=await sb.rpc("submit_quiz_result",{p_quiz_id:cfg.id,p_quiz_name:cfg.title,p_student_name:state.studentName||"Unknown",p_institution:state.institution||"Not provided",p_score:score,p_total_questions:total,p_percentage:pct,p_answers:answers,p_mode:cfg.mode});if(error){console.error(error);showSubmissionError();return}const row=data&&data[0];if(row&&row.result_token){localStorage.setItem("sv_last_quiz_result_token",row.result_token);window._resultToken=row.result_token}if(cfg.mode==="tutor-review"){showPendingResult()}else{showResult(score)}}
+async function submitResult(score){
+  const choices=state.answers.map(selectedIndex=>({selectedIndex}));
+  document.getElementById("submit").disabled=true;
+  const {data,error}=await sb.rpc("submit_standalone_quiz",{
+    p_quiz_id:cfg.id,p_student_name:state.studentName,
+    p_institution:state.institution,p_answers:choices
+  });
+  if(error||!data||!Number.isInteger(data.score)||data.total_questions!==total){
+    console.error("Guest result submission failed",error||data);
+    submitted=false;
+    document.getElementById("submit").disabled=false;
+    showSubmissionError();
+    return;
+  }
+  if(data.result_token){
+    localStorage.setItem("sv_last_quiz_result_token",data.result_token);
+    window._resultToken=data.result_token;
+  }
+  showResult(data.score);
+}
 function showPendingResult(){document.getElementById("quiz").style.display="none";document.getElementById("result").style.display="block";document.getElementById("score").textContent="Submitted — Pending Review";document.getElementById("summary").textContent="Your tutor or an administrator will release your result after review.";document.getElementById("review").innerHTML=""}
-function showSubmissionError(){document.getElementById("quiz").style.display="none";document.getElementById("result").style.display="block";document.getElementById("score").textContent="Submission failed";document.getElementById("summary").textContent="Your result could not be saved. Please try again.";document.getElementById("review").innerHTML=""}
+function showSubmissionError(){document.getElementById("quiz").style.display="none";document.getElementById("result").style.display="block";document.getElementById("score").textContent="Submission failed";document.getElementById("summary").textContent="Your result could not be saved. Please check your connection and retry submission.";document.getElementById("quiz").style.display="block";document.getElementById("result").style.display="none";document.getElementById("review").innerHTML=""}
 function showResult(score){window._score=score;document.getElementById("quiz").style.display="none";document.getElementById("result").style.display="block";const pct=Math.round(score/total*100);document.getElementById("score").textContent="You scored "+score+" out of "+total;document.getElementById("summary").textContent="Percentage: "+pct+"%";const list=document.getElementById("review");list.innerHTML="";lastReview.forEach(x=>{const d=document.createElement("div");d.className="q-review";d.innerHTML="<strong>"+(x.i+1)+". "+x.q+"</strong><div class='"+(x.ok?"ok":"bad")+"'>Your answer: "+(x.user===null?"No answer":String.fromCharCode(65+x.user)+". "+x.c[x.user])+"</div><div>Correct: "+String.fromCharCode(65+x.a)+". "+x.c[x.a]+"</div>";list.appendChild(d)})}
 function tick(){let m=Math.floor(seconds/60),s=seconds%60;document.getElementById("timer").textContent=String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");if(seconds<=0){finish();return}seconds--}
-async function startTutorQuiz(){
-  if(cfg.mode==="practice") return true;
-  const { data: { session } } = await sb.auth.getSession();
-  if(session?.user) return true;
-
-  return new Promise(resolve=>{
-    let popup=null, poll=null, timeout=null, done=false;
-    const cleanup=()=>{window.removeEventListener("message",onMessage);if(poll)clearInterval(poll);if(timeout)clearTimeout(timeout)};
-    const finish=ok=>{if(done)return;done=true;cleanup();resolve(ok)};
-    const onMessage=async event=>{
-      if(event.origin!=="https://www.sanctumvault.com.ng" || !popup || event.source!==popup) return;
-      if(event.data?.type!=="SANCTUMVAULT_AUTH_HANDOFF") return;
-      const expectedPath=window.location.pathname+window.location.search+window.location.hash;
-      if(event.data.quizPath!==expectedPath) return;
-      const s=event.data.session;
-      const ak="access_"+"token", rk="refresh_"+"token";
-      if(!s?.[ak] || !s?.[rk]) return finish(false);
-      const {data,error}=await sb.auth.setSession({[ak]:s[ak],[rk]:s[rk]});
-      if(error || !data.session){console.error("Quiz login handoff failed",error);alert("Login succeeded, but the quiz could not receive the session. Please try again.");return finish(false)}
-      finish(true);
-    };
-    window.addEventListener("message",onMessage);
-    const loginUrl="https://www.sanctumvault.com.ng/login?next="+encodeURIComponent(window.location.href);
-    popup=window.open(loginUrl,"sanctumvaultQuizLogin","popup=yes,width=480,height=760,resizable=yes,scrollbars=yes");
-    if(!popup){cleanup();alert("Please allow the SanctumVault login popup, then click Start Quiz again.");resolve(false);return}
-    poll=setInterval(()=>{if(popup.closed)finish(false)},500);
-    timeout=setTimeout(()=>{try{popup.close()}catch(_){}finish(false)},5*60*1000);
-  });
-}document.getElementById("start").onclick=async()=>{if(!(await startTutorQuiz()))return;const n=document.getElementById("name").value.trim();if(!n){alert("Please enter your name to begin.");return}state.studentName=n;state.institution=document.getElementById("institution").value.trim()||"Not provided";document.getElementById("intro").style.display="none";document.getElementById("quiz").style.display="block";render();tick();timer=setInterval(tick,1000)};
+async function startTutorQuiz(){return true;}
+document.getElementById("start").onclick=async()=>{const n=document.getElementById("name").value.trim();if(n.length<2||n.length>120){alert("Enter a name between 2 and 120 characters.");return}state.studentName=n;state.institution=document.getElementById("institution").value.trim();if(state.institution.length<2||state.institution.length>120){alert("Enter an institution between 2 and 120 characters.");return}document.getElementById("intro").style.display="none";document.getElementById("quiz").style.display="block";render();tick();timer=setInterval(tick,1000)};
 document.getElementById("next").onclick=()=>{if(state.idx<total-1){state.idx++;render()}};document.getElementById("prev").onclick=()=>{if(state.idx>0){state.idx--;render()}};document.getElementById("submit").onclick=()=>{const u=state.answers.filter(x=>x===null).length;if(u&&!confirm("You have "+u+" unanswered questions. Submit anyway?"))return;finish()};
 document.getElementById("retry").onclick=()=>location.reload();document.getElementById("share").onclick=()=>{const shareUrl=window.location.href;navigator.share?navigator.share({title:"SanctumVault Anatomy Quiz",text:"Study anatomy with SanctumVault.",url:shareUrl}):navigator.clipboard.writeText(shareUrl).then(()=>alert("SanctumVault Tutor Quizzes link copied."))};
 document.getElementById("export").onclick=()=>{let out=cfg.title+"\nScore: "+(window._score??"")+" / "+total+"\n\n";lastReview.forEach(x=>out+=(x.i+1)+". "+x.q+"\nYour answer: "+(x.user===null?"No answer":x.c[x.user])+"\nCorrect: "+x.c[x.a]+"\n\n");const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([out],{type:"text/plain"}));a.download="sanctumvault-anatomy-foundations-set-01-results.txt";a.click()};
